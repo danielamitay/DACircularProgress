@@ -31,6 +31,7 @@
     [self.view addSubview:progressView];
     
     largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 80.0f, 100.0f, 100.0f)];
+    largeProgressView.roundedCorners = NO;
     [self.view addSubview:largeProgressView];
     
     largestProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(60.0f, 200.0f, 200.0f, 200.0f)];

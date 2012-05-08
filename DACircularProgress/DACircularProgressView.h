@@ -12,6 +12,7 @@
 
 @property(nonatomic, strong) UIColor *trackTintColor;
 @property(nonatomic, strong) UIColor *progressTintColor;
-@property (nonatomic) float progress;
+@property(nonatomic) BOOL roundedCorners;
+@property(nonatomic) float progress;
 
 @end
