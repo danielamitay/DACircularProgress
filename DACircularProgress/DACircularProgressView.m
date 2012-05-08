@@ -14,6 +14,7 @@
 
 @synthesize trackTintColor = _trackTintColor;
 @synthesize progressTintColor =_progressTintColor;
+@synthesize roundedCorners = _roundedCorners;
 @synthesize progress = _progress;
 
 - (id)init
@@ -22,6 +23,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
+        _roundedCorners = YES;
     }
     return self;
 }
@@ -32,6 +34,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
+        _roundedCorners = YES;
     }
     return self;
 }
@@ -42,6 +45,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
+        _roundedCorners = YES;
     }
     return self;
 }
@@ -78,17 +82,21 @@
     CGContextFillPath(context);
     CGPathRelease(progressPath);
     
-    CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x - pathWidth/2, 0, pathWidth, pathWidth));
-    CGContextFillPath(context);
+  
+    if(_roundedCorners == YES)
+    {
+      CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x - pathWidth/2, 0, pathWidth, pathWidth));
+      CGContextFillPath(context);
     
-    CGContextAddEllipseInRect(context, CGRectMake(endPoint.x - pathWidth/2, endPoint.y - pathWidth/2, pathWidth, pathWidth));
-    CGContextFillPath(context);
+      CGContextAddEllipseInRect(context, CGRectMake(endPoint.x - pathWidth/2, endPoint.y - pathWidth/2, pathWidth, pathWidth));
+      CGContextFillPath(context);
+    }    
     
     CGContextSetBlendMode(context, kCGBlendModeClear);;
     CGFloat innerRadius = radius * 0.7;
-	CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);    
-	CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius*2, innerRadius*2));
-	CGContextFillPath(context);
+    CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);    
+    CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius*2, innerRadius*2));
+    CGContextFillPath(context);
 }
 
 #pragma mark - Property Methods
