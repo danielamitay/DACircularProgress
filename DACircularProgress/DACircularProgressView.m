@@ -17,6 +17,14 @@
 @synthesize roundedCorners = _roundedCorners;
 @synthesize progress = _progress;
 
+- (float)progress
+{
+    if(!_progress){
+        _progress = 0.001f;
+    }
+    return _progress;
+}
+
 - (id)init
 {
     self = [super initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
