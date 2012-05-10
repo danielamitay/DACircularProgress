@@ -8,7 +8,7 @@
 
 #import "DACircularProgressView.h"
 
-#define DEGREES_2_RADIANS(x) (0.0174532925 * (x))
+#define DEGREES_2_RADIANS(x) ((M_PI / 180) * (x))
 
 @implementation DACircularProgressView
 
