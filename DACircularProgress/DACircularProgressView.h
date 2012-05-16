@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define DA_ROUNDED_CORNERS_DEFAULT YES
+
 @interface DACircularProgressView : UIView
 
 @property(nonatomic, strong) UIColor *trackTintColor;
 @property(nonatomic, strong) UIColor *progressTintColor;
 @property(nonatomic) BOOL roundedCorners;
-@property(nonatomic) float progress;
+@property(nonatomic) CGFloat progress;
 
 @end
