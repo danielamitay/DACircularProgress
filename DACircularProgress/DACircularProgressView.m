@@ -19,7 +19,7 @@
 
 - (float)progress
 {
-    if(!_progress){
+    if (!_progress) {
         _progress = 0.001f;
     }
     return _progress;
@@ -31,7 +31,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = YES;
+        _roundedCorners = DAROUND_CORNERS_DEFAULT;
     }
     return self;
 }
@@ -42,7 +42,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = YES;
+        _roundedCorners = DAROUND_CORNERS_DEFAULT;
     }
     return self;
 }
@@ -53,7 +53,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = YES;
+        _roundedCorners = DAROUND_CORNERS_DEFAULT;
     }
     return self;
 }
@@ -127,7 +127,7 @@
     return _progressTintColor;
 }
 
-- (void)setProgress:(float)progress
+- (void)setProgress:(CGFloat)progress
 {
     _progress = progress;
     [self setNeedsDisplay];

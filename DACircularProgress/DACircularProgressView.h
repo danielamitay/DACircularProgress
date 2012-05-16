@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define DA_ROUNDED_CORNERS_DEFAULT YES
+
 @interface DACircularProgressView : UIView
 
 @property(nonatomic, strong) UIColor *trackTintColor;
