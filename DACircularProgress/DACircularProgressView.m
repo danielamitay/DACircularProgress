@@ -65,7 +65,7 @@
     
     CGFloat pathWidth = radius * 0.3f;
     
-    CGFloat radians = DEGREES_2_RADIANS((self.progress*359.9)-90);
+    CGFloat radians = DEGREES_2_RADIANS((self.progress*360.0f)-89.999f);
     CGFloat xOffset = radius*(1 + 0.85*cosf(radians));
     CGFloat yOffset = radius*(1 + 0.85*sinf(radians));
     CGPoint endPoint = CGPointMake(xOffset, yOffset);
