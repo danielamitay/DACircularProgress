@@ -31,7 +31,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = DAROUND_CORNERS_DEFAULT;
+        _roundedCorners = DA_ROUNDED_CORNERS_DEFAULT;
     }
     return self;
 }
@@ -42,7 +42,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = DAROUND_CORNERS_DEFAULT;
+        _roundedCorners = DA_ROUNDED_CORNERS_DEFAULT;
     }
     return self;
 }
@@ -53,7 +53,7 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = DAROUND_CORNERS_DEFAULT;
+        _roundedCorners = DA_ROUNDED_CORNERS_DEFAULT;
     }
     return self;
 }
