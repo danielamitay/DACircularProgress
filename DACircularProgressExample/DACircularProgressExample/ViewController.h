@@ -15,4 +15,6 @@
 @property (strong, nonatomic) DACircularProgressView *largeProgressView;
 @property (strong, nonatomic) IBOutlet DACircularProgressView *largestProgressView;
 
+@property (strong, nonatomic) IBOutlet UIButton *animationButton;
+
 @end

@@ -8,11 +8,17 @@
 
 #import "ViewController.h"
 
+@interface ViewController ()
+@property (strong, nonatomic) NSTimer *timer;
+@end
+
 @implementation ViewController
 
 @synthesize progressView;
 @synthesize largeProgressView;
 @synthesize largestProgressView;
+@synthesize animationButton;
+@synthesize timer;
 
 - (void)viewDidLoad
 {
@@ -24,8 +30,6 @@
     largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 80.0f, 100.0f, 100.0f)];
     largeProgressView.roundedCorners = NO;
     [self.view addSubview:largeProgressView];
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
 }
 
 - (void)progressChange
@@ -47,6 +51,21 @@
     if (largestProgressView.progress >= 1.0f)
     {
         largestProgressView.progress = 0.0f;
+    }
+}
+
+- (IBAction)toggleAnimation:(id)sender
+{
+    if ([self.timer isValid])
+    {
+        [self.timer invalidate];
+        self.timer = nil;
+        [self.animationButton setTitle:@"Start Animation" forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+        [self.animationButton setTitle:@"Stop Animation" forState:UIControlStateNormal];
     }
 }
 
