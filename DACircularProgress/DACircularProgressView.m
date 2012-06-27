@@ -27,13 +27,13 @@
 
 - (id)init
 {
-    self = [super initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
-    if (self)
-    {
-        self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = DA_ROUNDED_CORNERS_DEFAULT;
-    }
-    return self;
+    return [self initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
+}
+
+- (void)commonInit
+{
+    self.backgroundColor = [UIColor clearColor];
+    self.roundedCorners = YES;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -41,19 +41,17 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = DA_ROUNDED_CORNERS_DEFAULT;
+        [self commonInit];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithCoder:(NSCoder *)decoder
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super initWithCoder:decoder];
     if (self)
     {
-        self.backgroundColor = [UIColor clearColor];
-        _roundedCorners = DA_ROUNDED_CORNERS_DEFAULT;
+        [self commonInit];
     }
     return self;
 }
