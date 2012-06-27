@@ -15,14 +15,6 @@
 @synthesize roundedCorners = _roundedCorners;
 @synthesize progress = _progress;
 
-- (float)progress
-{
-    if (!_progress) {
-        _progress = 0.001f;
-    }
-    return _progress;
-}
-
 - (id)init
 {
     return [self initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
@@ -59,7 +51,8 @@
     CGPoint centerPoint = CGPointMake(rect.size.height / 2, rect.size.width / 2);
     CGFloat radius = MIN(rect.size.height, rect.size.width) / 2;
     
-    CGFloat radians = (self.progress * 2 * M_PI) - (M_PI_2 - FLT_EPSILON);
+    CGFloat progress = MIN(self.progress, 1.f - FLT_EPSILON);
+    CGFloat radians = (progress * 2 * M_PI) - M_PI_2;
     CGFloat xOffset = radius * (1 + 0.85 * cosf(radians));
     CGFloat yOffset = radius * (1 + 0.85 * sinf(radians));
     CGPoint endPoint = CGPointMake(xOffset, yOffset);
@@ -75,16 +68,19 @@
     CGContextFillPath(context);
     CGPathRelease(trackPath);
     
-    [self.progressTintColor setFill];
-    CGMutablePathRef progressPath = CGPathCreateMutable();
-    CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-    CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, radians, NO);
-    CGPathCloseSubpath(progressPath);
-    CGContextAddPath(context, progressPath);
-    CGContextFillPath(context);
-    CGPathRelease(progressPath);
+    if (progress > 0.f)
+    {
+        [self.progressTintColor setFill];
+        CGMutablePathRef progressPath = CGPathCreateMutable();
+        CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
+        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, radians, NO);
+        CGPathCloseSubpath(progressPath);
+        CGContextAddPath(context, progressPath);
+        CGContextFillPath(context);
+        CGPathRelease(progressPath);
+    }
     
-    if (self.roundedCorners == YES)
+    if (progress > 0.f && self.roundedCorners == YES)
     {
         CGFloat pathWidth = radius * 0.3f;
         
@@ -95,7 +91,7 @@
         CGContextFillPath(context);
     }
     
-    CGContextSetBlendMode(context, kCGBlendModeClear);;
+    CGContextSetBlendMode(context, kCGBlendModeClear);
     CGFloat innerRadius = radius * 0.7;
     CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);
     CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius * 2, innerRadius * 2));
@@ -124,7 +120,7 @@
 
 - (void)setProgress:(CGFloat)progress
 {
-    _progress = progress;
+    _progress = MIN(MAX(progress, 0.f), 1.f);
     [self setNeedsDisplay];
 }
 
