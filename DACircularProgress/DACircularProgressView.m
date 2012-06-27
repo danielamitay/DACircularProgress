@@ -23,6 +23,8 @@
 - (void)commonInit
 {
     self.backgroundColor = [UIColor clearColor];
+    self.trackTintColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.3f];
+    self.progressTintColor = [UIColor whiteColor];
     self.roundedCorners = YES;
 }
 
@@ -99,24 +101,6 @@
 }
 
 #pragma mark - Property Methods
-
-- (UIColor *)trackTintColor
-{
-    if (!_trackTintColor)
-    {
-        _trackTintColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.3f];
-    }
-    return _trackTintColor;
-}
-
-- (UIColor *)progressTintColor
-{
-    if (!_progressTintColor)
-    {
-        _progressTintColor = [UIColor whiteColor];
-    }
-    return _progressTintColor;
-}
 
 - (void)setProgress:(CGFloat)progress
 {
