@@ -13,6 +13,7 @@
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
 			<string>IBUIButton</string>
+			<string>IBUIProgressView</string>
 			<string>IBUIView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -35,27 +36,38 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="148201377">
+					<object class="IBUIProgressView" id="957011521">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">287</int>
-						<string key="NSFrame">{{60, 200}, {200, 200}}</string>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrame">{{20, 8}, {280, 9}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="322640529"/>
+						<reference key="NSNextKeyView" ref="560413720"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="560413720">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">287</int>
+						<string key="NSFrame">{{70, 204}, {180, 180}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1070631519"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="292118998">
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="759576876">
 								<int key="NSID">2</int>
 							</object>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIButton" id="322640529">
+					<object class="IBUIButton" id="1070631519">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{92, 408}, {136, 44}}</string>
+						<string key="NSFrame">{{92, 404}, {136, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -92,11 +104,11 @@
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="148201377"/>
+				<reference key="NSNextKeyView" ref="957011521"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MC43NQA</bytes>
-					<reference key="NSCustomColorSpace" ref="292118998"/>
+					<reference key="NSCustomColorSpace" ref="759576876"/>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -117,7 +129,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">largestProgressView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="148201377"/>
+						<reference key="destination" ref="560413720"/>
 					</object>
 					<int key="connectionID">9</int>
 				</object>
@@ -125,14 +137,22 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">animationButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="322640529"/>
+						<reference key="destination" ref="1070631519"/>
 					</object>
 					<int key="connectionID">14</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lineraProgressView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="957011521"/>
+					</object>
+					<int key="connectionID">16</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">toggleAnimation:</string>
-						<reference key="source" ref="322640529"/>
+						<reference key="source" ref="1070631519"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -162,19 +182,26 @@
 						<int key="objectID">6</int>
 						<reference key="object" ref="774585933"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="148201377"/>
-							<reference ref="322640529"/>
+							<reference ref="560413720"/>
+							<reference ref="1070631519"/>
+							<reference ref="957011521"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="148201377"/>
+						<reference key="object" ref="560413720"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="322640529"/>
+						<reference key="object" ref="1070631519"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">15</int>
+						<reference key="object" ref="957011521"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</array>
@@ -185,13 +212,14 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.CustomClassName">DACircularProgressView</string>
 				<object class="NSMutableDictionary" key="8.IBAttributePlaceholdersKey">
 					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
 					<object class="IBUIUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
 						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
-						<reference key="object" ref="148201377"/>
+						<reference key="object" ref="560413720"/>
 						<array key="userDefinedRuntimeAttributes">
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.color</string>
@@ -223,7 +251,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">14</int>
+			<int key="maxID">16</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -238,20 +266,10 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">toggleAnimation:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">toggleAnimation:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">toggleAnimation:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="animationButton">UIButton</string>
 						<string key="largestProgressView">DACircularProgressView</string>
+						<string key="lineraProgressView">UIProgressView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="animationButton">
@@ -261,6 +279,10 @@
 						<object class="IBToOneOutletInfo" key="largestProgressView">
 							<string key="name">largestProgressView</string>
 							<string key="candidateClassName">DACircularProgressView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lineraProgressView">
+							<string key="name">lineraProgressView</string>
+							<string key="candidateClassName">UIProgressView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

@@ -17,6 +17,7 @@
 @synthesize progressView;
 @synthesize largeProgressView;
 @synthesize largestProgressView;
+@synthesize lineraProgressView;
 @synthesize animationButton;
 @synthesize timer;
 
@@ -24,19 +25,25 @@
 {
     [super viewDidLoad];
     
-    progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 20.0f, 40.0f, 40.0f)];
+    progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
     [self.view addSubview:progressView];
     
-    largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 80.0f, 100.0f, 100.0f)];
+    largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 85.0f, 100.0f, 100.0f)];
     largeProgressView.roundedCorners = NO;
     [self.view addSubview:largeProgressView];
 }
 
 - (void)progressChange
 {
+    lineraProgressView.progress += 0.01;
     progressView.progress += 0.01;
     largeProgressView.progress += 0.01;
     largestProgressView.progress += 0.01;
+    
+    if (lineraProgressView.progress >= 1.0f)
+    {
+        lineraProgressView.progress = 0.0f;
+    }
     
     if (progressView.progress >= 1.0f)
     {
