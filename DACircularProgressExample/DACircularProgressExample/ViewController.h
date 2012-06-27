@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet DACircularProgressView *largestProgressView;
 @property (strong, nonatomic) IBOutlet UIProgressView *lineraProgressView;
 
-@property (strong, nonatomic) IBOutlet UIButton *animationButton;
+@property (strong, nonatomic) IBOutlet UIStepper *stepper;
+@property (strong, nonatomic) IBOutlet UILabel *progressLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *continuousSwitch;
 
 @end
