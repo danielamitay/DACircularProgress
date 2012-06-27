@@ -14,50 +14,35 @@
 
 @implementation ViewController
 
-@synthesize progressView;
-@synthesize largeProgressView;
-@synthesize largestProgressView;
-@synthesize lineraProgressView;
-@synthesize animationButton;
-@synthesize timer;
+@synthesize progressView = _progressView;
+@synthesize largeProgressView = _largeProgressView;
+@synthesize largestProgressView = _largestProgressView;
+@synthesize lineraProgressView = _lineraProgressView;
+@synthesize animationButton = _animationButton;
+@synthesize timer = _timer;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
-    [self.view addSubview:progressView];
+    self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
+    [self.view addSubview:self.progressView];
     
-    largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 85.0f, 100.0f, 100.0f)];
-    largeProgressView.roundedCorners = NO;
-    [self.view addSubview:largeProgressView];
+    self.largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 85.0f, 100.0f, 100.0f)];
+    self.largeProgressView.roundedCorners = NO;
+    [self.view addSubview:self.largeProgressView];
 }
 
 - (void)progressChange
 {
-    lineraProgressView.progress += 0.01;
-    progressView.progress += 0.01;
-    largeProgressView.progress += 0.01;
-    largestProgressView.progress += 0.01;
-    
-    if (lineraProgressView.progress >= 1.0f)
+    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.lineraProgressView, self.progressView, self.largeProgressView, self.largestProgressView, nil])
     {
-        lineraProgressView.progress = 0.0f;
-    }
-    
-    if (progressView.progress >= 1.0f)
-    {
-        progressView.progress = 0.0f;
-    }
-    
-    if (largeProgressView.progress >= 1.0f)
-    {
-        largeProgressView.progress = 0.0f;
-    }
-    
-    if (largestProgressView.progress >= 1.0f)
-    {
-        largestProgressView.progress = 0.0f;
+        [progressView setProgress:progressView.progress + 0.01f];
+        
+        if (progressView.progress >= 1.0f)
+        {
+            [progressView setProgress:0.f];
+        }
     }
 }
 
