@@ -8,8 +8,6 @@
 
 #import "DACircularProgressView.h"
 
-#define DEGREES_2_RADIANS(x) ((M_PI / 180) * (x))
-
 @implementation DACircularProgressView
 
 @synthesize trackTintColor = _trackTintColor;
@@ -63,9 +61,9 @@
     
     CGFloat pathWidth = radius * 0.3f;
     
-    CGFloat radians = DEGREES_2_RADIANS((self.progress*360.0f)-89.999f);
-    CGFloat xOffset = radius*(1 + 0.85*cosf(radians));
-    CGFloat yOffset = radius*(1 + 0.85*sinf(radians));
+    CGFloat radians = (self.progress * 2 * M_PI) - (M_PI_2 - FLT_EPSILON);
+    CGFloat xOffset = radius * (1 + 0.85 * cosf(radians));
+    CGFloat yOffset = radius * (1 + 0.85 * sinf(radians));
     CGPoint endPoint = CGPointMake(xOffset, yOffset);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -73,7 +71,7 @@
     [self.trackTintColor setFill];
     CGMutablePathRef trackPath = CGPathCreateMutable();
     CGPathMoveToPoint(trackPath, NULL, centerPoint.x, centerPoint.y);
-    CGPathAddArc(trackPath, NULL, centerPoint.x, centerPoint.y, radius, DEGREES_2_RADIANS(270), DEGREES_2_RADIANS(-90), NO);
+    CGPathAddArc(trackPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, -M_PI_2, NO);
     CGPathCloseSubpath(trackPath);
     CGContextAddPath(context, trackPath);
     CGContextFillPath(context);
@@ -82,7 +80,7 @@
     [self.progressTintColor setFill];
     CGMutablePathRef progressPath = CGPathCreateMutable();
     CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-    CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, DEGREES_2_RADIANS(270), radians, NO);
+    CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, radians, NO);
     CGPathCloseSubpath(progressPath);
     CGContextAddPath(context, progressPath);
     CGContextFillPath(context);
@@ -101,7 +99,7 @@
     CGContextSetBlendMode(context, kCGBlendModeClear);;
     CGFloat innerRadius = radius * 0.7;
     CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);    
-    CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius*2, innerRadius*2));
+    CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius * 2, innerRadius * 2));
     CGContextFillPath(context);
 }
 
