@@ -46,17 +46,17 @@
     largeProgressView.progress += 0.01;
     largestProgressView.progress += 0.01;
     
-    if (progressView.progress > 1.0f)
+    if (progressView.progress >= 1.0f)
     {
         progressView.progress = 0.0f;
     }
     
-    if (largeProgressView.progress > 1.0f)
+    if (largeProgressView.progress >= 1.0f)
     {
         largeProgressView.progress = 0.0f;
     }
     
-    if (largestProgressView.progress > 1.0f)
+    if (largestProgressView.progress >= 1.0f)
     {
         largestProgressView.progress = 0.0f;
     }
