@@ -25,9 +25,6 @@
     largeProgressView.roundedCorners = NO;
     [self.view addSubview:largeProgressView];
     
-    largestProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(60.0f, 200.0f, 200.0f, 200.0f)];
-    [self.view addSubview:largestProgressView];
-    
     [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
 }
 

@@ -13,6 +13,6 @@
 
 @property (strong, nonatomic) DACircularProgressView *progressView;
 @property (strong, nonatomic) DACircularProgressView *largeProgressView;
-@property (strong, nonatomic) DACircularProgressView *largestProgressView;
+@property (strong, nonatomic) IBOutlet DACircularProgressView *largestProgressView;
 
 @end
