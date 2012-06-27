@@ -58,7 +58,10 @@
 				63B7812F14E0BBE60009EE1F /* Frameworks */,
 				63B7812D14E0BBE60009EE1F /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		63B7812D14E0BBE60009EE1F /* Products */ = {
 			isa = PBXGroup;
