@@ -46,18 +46,28 @@
     }
 }
 
+- (void)startAnimation
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+    [self.animationButton setTitle:@"Stop Animation" forState:UIControlStateNormal];
+}
+
+- (void)stopAnimation
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    [self.animationButton setTitle:@"Start Animation" forState:UIControlStateNormal];
+}
+
 - (IBAction)toggleAnimation:(id)sender
 {
     if ([self.timer isValid])
     {
-        [self.timer invalidate];
-        self.timer = nil;
-        [self.animationButton setTitle:@"Start Animation" forState:UIControlStateNormal];
+        [self stopAnimation];
     }
     else
     {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
-        [self.animationButton setTitle:@"Stop Animation" forState:UIControlStateNormal];
+        [self startAnimation];
     }
 }
 
