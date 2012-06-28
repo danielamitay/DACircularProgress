@@ -16,6 +16,7 @@
 		63B7814414E0BBE60009EE1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B7814314E0BBE60009EE1F /* ViewController.m */; };
 		63B7814714E0BBE60009EE1F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B7814514E0BBE60009EE1F /* ViewController.xib */; };
 		63B7815014E0BC780009EE1F /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B7814F14E0BC780009EE1F /* DACircularProgressView.m */; };
+		DA8DF49E159BC0B800E477DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8DF49D159BC0B800E477DE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		63B7814614E0BBE60009EE1F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		63B7814E14E0BC780009EE1F /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		63B7814F14E0BC780009EE1F /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		DA8DF49D159BC0B800E477DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 				63B7813114E0BBE60009EE1F /* UIKit.framework in Frameworks */,
 				63B7813314E0BBE60009EE1F /* Foundation.framework in Frameworks */,
 				63B7813514E0BBE60009EE1F /* CoreGraphics.framework in Frameworks */,
+				DA8DF49E159BC0B800E477DE /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +80,7 @@
 				63B7813014E0BBE60009EE1F /* UIKit.framework */,
 				63B7813214E0BBE60009EE1F /* Foundation.framework */,
 				63B7813414E0BBE60009EE1F /* CoreGraphics.framework */,
+				DA8DF49D159BC0B800E477DE /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -295,6 +299,7 @@
 				63B7814C14E0BBE60009EE1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

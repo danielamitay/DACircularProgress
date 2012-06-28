@@ -43,11 +43,11 @@
     for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.lineraProgressView, self.progressView, self.largeProgressView, self.largestProgressView, nil])
     {
         CGFloat progress = ![self.timer isValid] ? self.stepper.value / 10.f : progressView.progress + 0.01f;
-        [progressView setProgress:progress];
+        [progressView setProgress:progress animated:YES];
         
         if (progressView.progress >= 1.0f && [self.timer isValid])
         {
-            [progressView setProgress:0.f];
+            [progressView setProgress:0.f animated:YES];
         }
         
         self.progressLabel.text = [NSString stringWithFormat:@"%.2f", progressView.progress];
