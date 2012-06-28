@@ -8,12 +8,106 @@
 
 #import "DACircularProgressView.h"
 
-@implementation DACircularProgressView
+#import <QuartzCore/QuartzCore.h>
+
+@interface DACircularProgressLayer : CALayer
+
+@property(nonatomic, strong) UIColor *trackTintColor;
+@property(nonatomic, strong) UIColor *progressTintColor;
+@property(nonatomic) BOOL roundedCorners;
+@property(nonatomic) CGFloat progress;
+
+@end
+
+@implementation DACircularProgressLayer
 
 @synthesize trackTintColor = _trackTintColor;
-@synthesize progressTintColor =_progressTintColor;
+@synthesize progressTintColor = _progressTintColor;
 @synthesize roundedCorners = _roundedCorners;
 @synthesize progress = _progress;
+
++ (BOOL)needsDisplayForKey:(NSString *)key
+{
+    return [key isEqualToString:@"progress"] ? YES : [super needsDisplayForKey:key];
+}
+
+- (id)initWithLayer:(DACircularProgressLayer *)layer
+{
+    self = [super initWithLayer:layer];
+    if (self)
+    {
+        self.trackTintColor = layer.trackTintColor;
+        self.progressTintColor = layer.progressTintColor;
+        self.roundedCorners = layer.roundedCorners;
+        self.progress = layer.progress;
+    }
+    return self;
+}
+
+- (void)drawInContext:(CGContextRef)context
+{
+    CGRect rect = self.bounds;
+    CGPoint centerPoint = CGPointMake(rect.size.height / 2, rect.size.width / 2);
+    CGFloat radius = MIN(rect.size.height, rect.size.width) / 2;
+    
+    CGFloat progress = MIN(self.progress, 1.f - FLT_EPSILON);
+    CGFloat radians = (progress * 2 * M_PI) - M_PI_2;
+    CGFloat xOffset = radius * (1 + 0.85 * cosf(radians));
+    CGFloat yOffset = radius * (1 + 0.85 * sinf(radians));
+    CGPoint endPoint = CGPointMake(xOffset, yOffset);
+    
+    CGContextSetFillColorWithColor(context, self.trackTintColor.CGColor);
+    CGMutablePathRef trackPath = CGPathCreateMutable();
+    CGPathMoveToPoint(trackPath, NULL, centerPoint.x, centerPoint.y);
+    CGPathAddArc(trackPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, -M_PI_2, NO);
+    CGPathCloseSubpath(trackPath);
+    CGContextAddPath(context, trackPath);
+    CGContextFillPath(context);
+    CGPathRelease(trackPath);
+    
+    if (progress > 0.f)
+    {
+        CGContextSetFillColorWithColor(context, self.progressTintColor.CGColor);
+        CGMutablePathRef progressPath = CGPathCreateMutable();
+        CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
+        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, radians, NO);
+        CGPathCloseSubpath(progressPath);
+        CGContextAddPath(context, progressPath);
+        CGContextFillPath(context);
+        CGPathRelease(progressPath);
+    }
+    
+    if (progress > 0.f && self.roundedCorners == YES)
+    {
+        CGFloat pathWidth = radius * 0.3f;
+        
+        CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x - pathWidth / 2, 0, pathWidth, pathWidth));
+        CGContextFillPath(context);
+        
+        CGContextAddEllipseInRect(context, CGRectMake(endPoint.x - pathWidth / 2, endPoint.y - pathWidth / 2, pathWidth, pathWidth));
+        CGContextFillPath(context);
+    }
+    
+    CGContextSetBlendMode(context, kCGBlendModeClear);
+    CGFloat innerRadius = radius * 0.7;
+    CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);
+    CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius * 2, innerRadius * 2));
+    CGContextFillPath(context);
+}
+
+@end
+
+@implementation DACircularProgressView
+
+@dynamic trackTintColor;
+@dynamic progressTintColor;
+@dynamic roundedCorners;
+@dynamic progress;
+
++ (Class)layerClass
+{
+    return [DACircularProgressLayer class];
+}
 
 - (id)init
 {
@@ -48,64 +142,48 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect
-{    
-    CGPoint centerPoint = CGPointMake(rect.size.height / 2, rect.size.width / 2);
-    CGFloat radius = MIN(rect.size.height, rect.size.width) / 2;
-    
-    CGFloat progress = MIN(self.progress, 1.f - FLT_EPSILON);
-    CGFloat radians = (progress * 2 * M_PI) - M_PI_2;
-    CGFloat xOffset = radius * (1 + 0.85 * cosf(radians));
-    CGFloat yOffset = radius * (1 + 0.85 * sinf(radians));
-    CGPoint endPoint = CGPointMake(xOffset, yOffset);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self.trackTintColor setFill];
-    CGMutablePathRef trackPath = CGPathCreateMutable();
-    CGPathMoveToPoint(trackPath, NULL, centerPoint.x, centerPoint.y);
-    CGPathAddArc(trackPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, -M_PI_2, NO);
-    CGPathCloseSubpath(trackPath);
-    CGContextAddPath(context, trackPath);
-    CGContextFillPath(context);
-    CGPathRelease(trackPath);
-    
-    if (progress > 0.f)
-    {
-        [self.progressTintColor setFill];
-        CGMutablePathRef progressPath = CGPathCreateMutable();
-        CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, 3 * M_PI_2, radians, NO);
-        CGPathCloseSubpath(progressPath);
-        CGContextAddPath(context, progressPath);
-        CGContextFillPath(context);
-        CGPathRelease(progressPath);
-    }
-    
-    if (progress > 0.f && self.roundedCorners == YES)
-    {
-        CGFloat pathWidth = radius * 0.3f;
-        
-        CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x - pathWidth / 2, 0, pathWidth, pathWidth));
-        CGContextFillPath(context);
-        
-        CGContextAddEllipseInRect(context, CGRectMake(endPoint.x - pathWidth / 2, endPoint.y - pathWidth / 2, pathWidth, pathWidth));
-        CGContextFillPath(context);
-    }
-    
-    CGContextSetBlendMode(context, kCGBlendModeClear);
-    CGFloat innerRadius = radius * 0.7;
-    CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);
-    CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius * 2, innerRadius * 2));
-    CGContextFillPath(context);
-}
-
-#pragma mark - Property Methods
+#pragma mark - Progress
 
 - (void)setProgress:(CGFloat)progress
 {
-    _progress = MIN(MAX(progress, 0.f), 1.f);
-    [self setNeedsDisplay];
+    [self setProgress:progress animated:NO];
+}
+
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated
+{
+    DACircularProgressLayer *layer = (DACircularProgressLayer *)self.layer;
+    CGFloat pinnedProgress = MIN(MAX(progress, 0.f), 1.f);
+    if (animated)
+    {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
+        animation.duration = fabsf(self.progress - pinnedProgress); // Same duration as UIProgressView animation
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.fromValue = [NSNumber numberWithFloat:self.progress];
+        animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
+        [layer addAnimation:animation forKey:@"progress"];
+    }
+    else
+    {
+        [layer setNeedsDisplay];
+    }
+    layer.progress = pinnedProgress;
+}
+
+#pragma mark - Dynamic Properties
+
+- (id)forwardingTargetForSelector:(SEL)selector
+{
+    if ([NSStringFromSelector(selector) hasPrefix:@"set"])
+    {
+        [self.layer setNeedsDisplay];
+    }
+    return self.layer;
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    [self.layer setNeedsDisplay];
+    [self.layer setValue:value forKey:key];
 }
 
 @end
