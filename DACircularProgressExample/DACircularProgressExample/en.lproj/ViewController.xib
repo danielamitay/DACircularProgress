@@ -72,7 +72,7 @@
 						<string key="NSFrame">{{80, 383}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="76182288"/>
+						<reference key="NSNextKeyView" ref="808782100"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -81,10 +81,11 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<bool key="IBUIContinuous">NO</bool>
 						<bool key="IBUIAutorepeat">NO</bool>
+						<bool key="IBUIWraps">YES</bool>
 						<double key="IBUIMaximumValue">12</double>
 						<double key="IBUIStepValue">3</double>
 					</object>
-					<object class="IBUILabel" id="76182288">
+					<object class="IBUILabel" id="808782100">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{186, 387}, {54, 21}}</string>
@@ -100,16 +101,16 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<string key="IBUIText">0</string>
-						<object class="NSColor" key="IBUITextColor" id="163823360">
+						<object class="NSColor" key="IBUITextColor" id="787402540">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
 						<int key="IBUITextAlignment">1</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="796170187">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="287197002">
 							<int key="type">1</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="224063915">
+						<object class="NSFont" key="IBUIFont" id="1032845015">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
@@ -133,9 +134,9 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<string key="IBUIText">Continuous Animation:</string>
-						<reference key="IBUITextColor" ref="163823360"/>
-						<reference key="IBUIFontDescription" ref="796170187"/>
-						<reference key="IBUIFont" ref="224063915"/>
+						<reference key="IBUITextColor" ref="787402540"/>
+						<reference key="IBUIFontDescription" ref="287197002"/>
+						<reference key="IBUIFont" ref="1032845015"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<int key="IBUIAutoshrinkMode">0</int>
 					</object>
@@ -213,7 +214,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">progressLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="76182288"/>
+						<reference key="destination" ref="808782100"/>
 					</object>
 					<int key="connectionID">36</int>
 				</object>
@@ -264,7 +265,7 @@
 							<reference ref="438725905"/>
 							<reference ref="104752047"/>
 							<reference ref="688712821"/>
-							<reference ref="76182288"/>
+							<reference ref="808782100"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -296,7 +297,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">35</int>
-						<reference key="object" ref="76182288"/>
+						<reference key="object" ref="808782100"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</array>
@@ -365,13 +366,13 @@
 					<string key="className">ViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="step:">UIStepper</string>
+						<string key="step:">id</string>
 						<string key="toggleAnimation:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="step:">
 							<string key="name">step:</string>
-							<string key="candidateClassName">UIStepper</string>
+							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="toggleAnimation:">
 							<string key="name">toggleAnimation:</string>
