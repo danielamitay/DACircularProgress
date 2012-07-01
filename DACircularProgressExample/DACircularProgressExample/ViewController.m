@@ -35,6 +35,9 @@
     self.largeProgressView.roundedCorners = NO;
     [self.view addSubview:self.largeProgressView];
     
+    self.largestProgressView.trackTintColor = [UIColor blackColor];
+    self.largestProgressView.progressTintColor = [UIColor yellowColor];
+    
     [self startAnimation];
 }
 

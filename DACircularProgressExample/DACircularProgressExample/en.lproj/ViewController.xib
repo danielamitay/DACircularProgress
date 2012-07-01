@@ -3,20 +3,20 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2809</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
 		<string key="IBDocument.AppKitVersion">1138.47</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1884</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBProxyObject</string>
-			<string>IBUILabel</string>
 			<string>IBUIProgressView</string>
-			<string>IBUIStepper</string>
 			<string>IBUISwitch</string>
+			<string>IBUIStepper</string>
 			<string>IBUIView</string>
+			<string>IBUILabel</string>
+			<string>IBProxyObject</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -98,13 +98,13 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
 						<string key="IBUIText">0</string>
 						<object class="NSColor" key="IBUITextColor" id="787402540">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="287197002">
 							<int key="type">1</int>
@@ -116,7 +116,6 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<int key="IBUIAutoshrinkMode">0</int>
 					</object>
 					<object class="IBUILabel" id="438725905">
 						<reference key="NSNextResponder" ref="774585933"/>
@@ -131,14 +130,13 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
 						<string key="IBUIText">Continuous Animation:</string>
 						<reference key="IBUITextColor" ref="787402540"/>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">0</int>
 						<reference key="IBUIFontDescription" ref="287197002"/>
 						<reference key="IBUIFont" ref="1032845015"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<int key="IBUIAutoshrinkMode">0</int>
 					</object>
 					<object class="IBUISwitch" id="104752047">
 						<reference key="NSNextResponder" ref="774585933"/>
@@ -321,22 +319,6 @@
 						<reference key="object" ref="748609496"/>
 						<array key="userDefinedRuntimeAttributes">
 							<object class="IBUserDefinedRuntimeAttribute">
-								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.color</string>
-								<string key="keyPath">trackTintColor</string>
-								<object class="NSColor" key="value">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-								</object>
-							</object>
-							<object class="IBUserDefinedRuntimeAttribute">
-								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.color</string>
-								<string key="keyPath">progressTintColor</string>
-								<object class="NSColor" key="value">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAxIDAAA</bytes>
-								</object>
-							</object>
-							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.boolean</string>
 								<string key="keyPath">roundedCorners</string>
 								<boolean value="NO" key="value"/>
@@ -365,20 +347,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="step:">id</string>
-						<string key="toggleAnimation:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="step:">
-							<string key="name">step:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleAnimation:">
-							<string key="name">toggleAnimation:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="continuousSwitch">UISwitch</string>
 						<string key="largestProgressView">DACircularProgressView</string>
@@ -423,6 +391,6 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<string key="IBCocoaTouchPluginVersion">1884</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>
