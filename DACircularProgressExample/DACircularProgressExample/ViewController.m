@@ -28,6 +28,7 @@
     [super viewDidLoad];
     
     self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
+    self.progressView.roundedCorners = YES;
     self.progressView.trackTintColor = [UIColor clearColor];
     [self.view addSubview:self.progressView];
     
@@ -37,6 +38,7 @@
     
     self.largestProgressView.trackTintColor = [UIColor blackColor];
     self.largestProgressView.progressTintColor = [UIColor yellowColor];
+    self.largestProgressView.thicknessRatio = 1.0f;
     
     [self startAnimation];
 }
