@@ -52,9 +52,6 @@
     
     CGFloat progress = MIN(self.progress, 1.f - FLT_EPSILON);
     CGFloat radians = (progress * 2 * M_PI) - M_PI_2;
-    CGFloat xOffset = radius * (1 + 0.85 * cosf(radians));
-    CGFloat yOffset = radius * (1 + 0.85 * sinf(radians));
-    CGPoint endPoint = CGPointMake(xOffset, yOffset);
     
     CGContextSetFillColorWithColor(context, self.trackTintColor.CGColor);
     CGMutablePathRef trackPath = CGPathCreateMutable();
@@ -80,6 +77,9 @@
     if (progress > 0.f && self.roundedCorners == YES)
     {
         CGFloat pathWidth = radius * 0.3f;
+        CGFloat xOffset = radius * (1 + 0.85 * cosf(radians));
+        CGFloat yOffset = radius * (1 + 0.85 * sinf(radians));
+        CGPoint endPoint = CGPointMake(xOffset, yOffset);
         
         CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x - pathWidth / 2, 0, pathWidth, pathWidth));
         CGContextFillPath(context);
