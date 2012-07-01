@@ -116,6 +116,7 @@
 
 - (void)commonInit
 {
+    self.layer.contentsScale = [UIScreen mainScreen].scale;
     self.backgroundColor = [UIColor clearColor];
     self.trackTintColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.3f];
     self.progressTintColor = [UIColor whiteColor];
