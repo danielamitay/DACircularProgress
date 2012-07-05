@@ -14,7 +14,7 @@
 
 @property(nonatomic, strong) UIColor *trackTintColor;
 @property(nonatomic, strong) UIColor *progressTintColor;
-@property(nonatomic) BOOL roundedCorners;
+@property(nonatomic) NSInteger roundedCorners;
 @property(nonatomic) CGFloat thicknessRatio;
 @property(nonatomic) CGFloat progress;
 
@@ -77,7 +77,7 @@
         CGPathRelease(progressPath);
     }
     
-    if (progress > 0.f && self.roundedCorners == YES)
+    if (progress > 0.f && self.roundedCorners)
     {
         CGFloat pathWidth = radius * self.thicknessRatio;
         CGFloat xOffset = radius * (1.f + ((1 - (self.thicknessRatio / 2.f)) * cosf(radians)));
@@ -102,29 +102,31 @@
 
 @implementation DACircularProgressView
 
-@dynamic trackTintColor;
-@dynamic progressTintColor;
-@dynamic roundedCorners;
-@dynamic thicknessRatio;
-@dynamic progress;
++ (void) initialize
+{
+    if (self != [DACircularProgressView class])
+        return;
+    
+    id appearance = [self appearance];
+    [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
+    [appearance setProgressTintColor:[UIColor whiteColor]];
+    [appearance setThicknessRatio:0.3f];
+    [appearance setRoundedCorners:NO];
+}
 
 + (Class)layerClass
 {
     return [DACircularProgressLayer class];
 }
 
+- (DACircularProgressLayer *)circularProgressLayer
+{
+    return (DACircularProgressLayer *)self.layer;
+}
+
 - (id)init
 {
     return [self initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
-}
-
-- (void)commonInit
-{
-    self.layer.contentsScale = [UIScreen mainScreen].scale;
-    self.trackTintColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.3f];
-    self.progressTintColor = [UIColor whiteColor];
-    self.thicknessRatio = 0.3f;
-    self.roundedCorners = NO;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -133,22 +135,21 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        [self commonInit];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
+- (void)didMoveToWindow
 {
-    self = [super initWithCoder:decoder];
-    if (self)
-    {
-        [self commonInit];
-    }
-    return self;
+    self.circularProgressLayer.contentsScale = [UIScreen mainScreen].scale;
 }
 
 #pragma mark - Progress
+
+-(CGFloat)progress
+{
+    return self.circularProgressLayer.progress;
+}
 
 - (void)setProgress:(CGFloat)progress
 {
@@ -157,7 +158,6 @@
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated
 {
-    DACircularProgressLayer *layer = (DACircularProgressLayer *)self.layer;
     CGFloat pinnedProgress = MIN(MAX(progress, 0.f), 1.f);
     if (animated)
     {
@@ -166,36 +166,59 @@
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
-        [layer addAnimation:animation forKey:@"progress"];
+        [self.circularProgressLayer addAnimation:animation forKey:@"progress"];
     }
     else
     {
-        [layer setNeedsDisplay];
+        [self.circularProgressLayer setNeedsDisplay];
     }
-    layer.progress = pinnedProgress;
+    self.circularProgressLayer.progress = pinnedProgress;
+}
+
+#pragma mark - UIAppearance methods
+
+- (UIColor *)trackTintColor
+{
+    return self.circularProgressLayer.trackTintColor;
+}
+
+- (void)setTrackTintColor:(UIColor *)trackTintColor
+{
+    self.circularProgressLayer.trackTintColor = trackTintColor;
+    [self.circularProgressLayer setNeedsDisplay];
+}
+
+- (UIColor *)progressTintColor
+{
+    return self.circularProgressLayer.progressTintColor;
+}
+
+- (void)setProgressTintColor:(UIColor *)progressTintColor
+{
+    self.circularProgressLayer.progressTintColor = progressTintColor;
+    [self.circularProgressLayer setNeedsDisplay];
+}
+
+- (NSInteger)roundedCorners
+{
+    return self.roundedCorners;
+}
+
+-(void)setRoundedCorners:(NSInteger)roundedCorners
+{
+    self.circularProgressLayer.roundedCorners = roundedCorners;
+    [self.circularProgressLayer setNeedsDisplay];
+}
+
+-(CGFloat)thicknessRatio
+{
+    return self.circularProgressLayer.thicknessRatio;
 }
 
 - (void)setThicknessRatio:(CGFloat)thicknessRatio
 {
-    DACircularProgressLayer *layer = (DACircularProgressLayer *)self.layer;
-    layer.thicknessRatio = MIN(MAX(thicknessRatio, 0.f), 1.f);
-}
-
-#pragma mark - Dynamic Properties
-
-- (id)forwardingTargetForSelector:(SEL)selector
-{
-    if ([NSStringFromSelector(selector) hasPrefix:@"set"])
-    {
-        [self.layer setNeedsDisplay];
-    }
-    return self.layer;
-}
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    [self.layer setNeedsDisplay];
-    [self.layer setValue:value forKey:key];
+    self.circularProgressLayer.thicknessRatio = MIN(MAX(thicknessRatio, 0.f), 1.f);
+    [self.circularProgressLayer setNeedsDisplay];
 }
 
 @end
