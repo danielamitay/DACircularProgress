@@ -8,90 +8,86 @@
 
 #import "ViewController.h"
 
+@interface ViewController ()
+@property (strong, nonatomic) NSTimer *timer;
+@end
+
 @implementation ViewController
 
-@synthesize progressView;
-@synthesize largeProgressView;
-@synthesize largestProgressView;
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
+@synthesize progressView = _progressView;
+@synthesize largeProgressView = _largeProgressView;
+@synthesize largestProgressView = _largestProgressView;
+@synthesize lineraProgressView = _lineraProgressView;
+@synthesize stepper = _stepper;
+@synthesize progressLabel = _progressLabel;
+@synthesize continuousSwitch = _continuousSwitch;
+@synthesize timer = _timer;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 20.0f, 40.0f, 40.0f)];
-    [self.view addSubview:progressView];
+    self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
+    self.progressView.roundedCorners = YES;
+    self.progressView.trackTintColor = [UIColor clearColor];
+    [self.view addSubview:self.progressView];
     
-    largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 80.0f, 100.0f, 100.0f)];
-    largeProgressView.roundedCorners = NO;
-    [self.view addSubview:largeProgressView];
+    self.largeProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(110.0f, 85.0f, 100.0f, 100.0f)];
+    self.largeProgressView.roundedCorners = NO;
+    [self.view addSubview:self.largeProgressView];
     
-    largestProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(60.0f, 200.0f, 200.0f, 200.0f)];
-    [self.view addSubview:largestProgressView];
+    self.largestProgressView.trackTintColor = [UIColor blackColor];
+    self.largestProgressView.progressTintColor = [UIColor yellowColor];
+    self.largestProgressView.thicknessRatio = 1.0f;
     
-    [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+    [self startAnimation];
 }
 
 - (void)progressChange
 {
-    progressView.progress += 0.01;
-    largeProgressView.progress += 0.01;
-    largestProgressView.progress += 0.01;
-    
-    if (progressView.progress > 1.0f)
+    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.lineraProgressView, self.progressView, self.largeProgressView, self.largestProgressView, nil])
     {
-        progressView.progress = 0.0f;
-    }
-    
-    if (largeProgressView.progress > 1.0f)
-    {
-        largeProgressView.progress = 0.0f;
-    }
-    
-    if (largestProgressView.progress > 1.0f)
-    {
-        largestProgressView.progress = 0.0f;
+        CGFloat progress = ![self.timer isValid] ? self.stepper.value / 10.f : progressView.progress + 0.01f;
+        [progressView setProgress:progress animated:YES];
+        
+        if (progressView.progress >= 1.0f && [self.timer isValid])
+        {
+            [progressView setProgress:0.f animated:YES];
+        }
+        
+        self.progressLabel.text = [NSString stringWithFormat:@"%.2f", progressView.progress];
     }
 }
-- (void)viewDidUnload
+
+- (void)startAnimation
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+    self.continuousSwitch.on = YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)stopAnimation
 {
-    [super viewWillAppear:animated];
+    [self.timer invalidate];
+    self.timer = nil;
+    self.continuousSwitch.on = NO;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (IBAction)toggleAnimation:(id)sender
 {
-    [super viewDidAppear:animated];
+    if (self.continuousSwitch.on)
+    {
+        [self startAnimation];
+    }
+    else
+    {
+        [self stopAnimation];
+    }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (IBAction)step:(id)sender
 {
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    [self stopAnimation];
+    [self progressChange];
 }
 
 @end
