@@ -13,7 +13,8 @@ View the included example project for a demonstration.
 To use DACircularProgress:
 
 - Copy over the `DACircularProgress` folder to your project folder.
-- `#import "DACircularProgress.h"`
+- Make sure that your project includes the QuartzCore.framework.
+- `#import "DACircularProgressView.h"`
 
 ## Notes
 
