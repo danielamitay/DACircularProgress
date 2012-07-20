@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-#define DA_ROUNDED_CORNERS_DEFAULT YES
-
 @interface DACircularProgressView : UIView
 
-@property(nonatomic, strong) UIColor *trackTintColor;
-@property(nonatomic, strong) UIColor *progressTintColor;
-@property(nonatomic) BOOL roundedCorners;
+@property(nonatomic, strong) UIColor *trackTintColor UI_APPEARANCE_SELECTOR;
+@property(nonatomic, strong) UIColor *progressTintColor UI_APPEARANCE_SELECTOR;
+@property(nonatomic) NSInteger roundedCorners UI_APPEARANCE_SELECTOR; // Can not use BOOL with UI_APPEARANCE_SELECTOR :-(
+@property(nonatomic) CGFloat thicknessRatio UI_APPEARANCE_SELECTOR;
 @property(nonatomic) CGFloat progress;
+
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
 
 @end

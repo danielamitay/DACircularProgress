@@ -13,6 +13,11 @@
 
 @property (strong, nonatomic) DACircularProgressView *progressView;
 @property (strong, nonatomic) DACircularProgressView *largeProgressView;
-@property (strong, nonatomic) DACircularProgressView *largestProgressView;
+@property (strong, nonatomic) IBOutlet DACircularProgressView *largestProgressView;
+@property (strong, nonatomic) IBOutlet UIProgressView *lineraProgressView;
+
+@property (strong, nonatomic) IBOutlet UIStepper *stepper;
+@property (strong, nonatomic) IBOutlet UILabel *progressLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *continuousSwitch;
 
 @end
