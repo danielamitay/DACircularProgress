@@ -6,6 +6,8 @@ It was built to be an imitation of Facebook's photo progress indicator.
 
 View the included example project for a demonstration.
 
+![Screenshot](https://github.com/danielamitay/DACircularProgress/raw/master/screenshot.png)
+
 ## Installation
 
 To use DACircularProgress:
