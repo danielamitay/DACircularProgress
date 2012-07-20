@@ -17,7 +17,7 @@
 @synthesize progressView = _progressView;
 @synthesize largeProgressView = _largeProgressView;
 @synthesize largestProgressView = _largestProgressView;
-@synthesize lineraProgressView = _lineraProgressView;
+@synthesize linearProgressView = _linearProgressView;
 @synthesize stepper = _stepper;
 @synthesize progressLabel = _progressLabel;
 @synthesize continuousSwitch = _continuousSwitch;
@@ -45,7 +45,7 @@
 
 - (void)progressChange
 {
-    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.lineraProgressView, self.progressView, self.largeProgressView, self.largestProgressView, nil])
+    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.linearProgressView, self.progressView, self.largeProgressView, self.largestProgressView, nil])
     {
         CGFloat progress = ![self.timer isValid] ? self.stepper.value / 10.f : progressView.progress + 0.01f;
         [progressView setProgress:progress animated:YES];
