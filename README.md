@@ -10,18 +10,8 @@ View the included example project for a demonstration.
 
 To use DACircularProgress:
 
-1 - Copy over the `DACircularProgress` folder to your project folder.
-2 - Allocate, Initialize.
-Optional - Customize.
-
-## Usage
-Wherever you want to use DACircularProgress, import the appropriate header file and initialize as follows:
-
-```
-' #import "DACircularProgressView.h" '
-```
-
-Initialize either via code or Interface Builder.
+- Copy over the `DACircularProgress` folder to your project folder.
+- `#import "DACircularProgress.h"`
 
 ## Notes
 
