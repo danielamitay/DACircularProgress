@@ -39,6 +39,10 @@ DACircularProgress was made with ARC enabled by default.
 
 If you use/enjoy DACircularProgress, let me know!
 
+## Credits
+
+DACircularProgress is brought to you by [Daniel Amitay](http://www.amitay.us) and [contributors to the project](https://github.com/danielamitay/DACircularProgress/contributors). A special thanks to [Cédric Luthi](https://github.com/0xced) for a significant amount of changes. If you have feature suggestions or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/danielamitay/DACircularProgress/issues/new). If you're using SVProgressHUD in your project, attribution would be nice.
+
 ## License
 
 ### MIT License
