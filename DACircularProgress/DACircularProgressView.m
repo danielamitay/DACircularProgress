@@ -22,29 +22,15 @@
 
 @implementation DACircularProgressLayer
 
-@synthesize trackTintColor = _trackTintColor;
-@synthesize progressTintColor = _progressTintColor;
-@synthesize roundedCorners = _roundedCorners;
-@synthesize thicknessRatio = _thicknessRatio;
-@synthesize progress = _progress;
+@dynamic trackTintColor;
+@dynamic progressTintColor;
+@dynamic roundedCorners;
+@dynamic thicknessRatio;
+@dynamic progress;
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
     return [key isEqualToString:@"progress"] ? YES : [super needsDisplayForKey:key];
-}
-
-- (id)initWithLayer:(DACircularProgressLayer *)layer
-{
-    self = [super initWithLayer:layer];
-    if (self)
-    {
-        self.trackTintColor = layer.trackTintColor;
-        self.progressTintColor = layer.progressTintColor;
-        self.roundedCorners = layer.roundedCorners;
-        self.thicknessRatio = layer.thicknessRatio;
-        self.progress = layer.progress;
-    }
-    return self;
 }
 
 - (void)drawInContext:(CGContextRef)context
