@@ -16,19 +16,32 @@ To use DACircularProgress:
 - Make sure that your project includes the QuartzCore.framework.
 - `#import "DACircularProgressView.h"`
 
+### Example Code
+
+```objective-c
+
+self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
+self.progressView.roundedCorners = YES;
+self.progressView.trackTintColor = [UIColor clearColor];
+[self.view addSubview:self.progressView];
+```
+
 ## Notes
+
+### Compatibility
+
+iOS5.0+
 
 ### Automatic Reference Counting (ARC) support
 DACircularProgress was made with ARC enabled by default.
 
 ## Contact
 
-- [Personal website](http://www.amitay.us)
+- [Personal website](http://danielamitay.com)
 - [GitHub](http://github.com/danielamitay)
 - [Twitter](http://twitter.com/danielamitay)
 - [LinkedIn](http://www.linkedin.com/in/danielamitay)
-- [Hacker News](http://news.ycombinator.com/user?id=danielamitay)
-- [Email](daniel@amitay.us)
+- [Email](hello@danielamitay.com)
 
 If you use/enjoy DACircularProgress, let me know!
 
@@ -40,7 +53,7 @@ DACircularProgress is brought to you by [Daniel Amitay](http://www.amitay.us) an
 
 ### MIT License
 
-Copyright (c) 2012 Daniel Amitay (http://www.amitay.us)
+Copyright (c) 2012 Daniel Amitay (http://danielamitay.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

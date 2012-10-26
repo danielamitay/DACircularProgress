@@ -2,7 +2,7 @@
 
 ## MIT License
 
-Copyright (c) 2012 Daniel Amitay (http://www.amitay.us)
+Copyright (c) 2012 Daniel Amitay (http://danielamitay.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
