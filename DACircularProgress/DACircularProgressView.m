@@ -98,6 +98,9 @@
     [appearance setProgressTintColor:[UIColor whiteColor]];
     [appearance setThicknessRatio:0.3f];
     [appearance setRoundedCorners:NO];
+    
+    [appearance setIndeterminateDuration:2.0f];
+    [appearance setIndeterminate:NO];
 }
 
 + (Class)layerClass
@@ -205,6 +208,28 @@
 {
     self.circularProgressLayer.thicknessRatio = MIN(MAX(thicknessRatio, 0.f), 1.f);
     [self.circularProgressLayer setNeedsDisplay];
+}
+
+- (NSInteger)indeterminate
+{
+    CAAnimation *spinAnimation = [self.layer animationForKey:@"indeterminateAnimation"];
+    return spinAnimation;
+}
+
+- (void)setIndeterminate:(NSInteger)indeterminate
+{
+    if (indeterminate && !self.indeterminate)
+    {
+        CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+        spinAnimation.byValue = [NSNumber numberWithFloat:2.0f*M_PI];
+        spinAnimation.duration = self.indeterminateDuration;
+        spinAnimation.repeatCount = HUGE_VALF;
+        [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
+    }
+    else
+    {
+        [self.layer removeAnimationForKey:@"indeterminateAnimation"];
+    }
 }
 
 @end
