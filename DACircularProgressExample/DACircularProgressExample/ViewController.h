@@ -19,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet UIStepper *stepper;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *continuousSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *indeterminateSwitch;
 
 @end

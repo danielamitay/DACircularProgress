@@ -61,7 +61,7 @@
 
 - (void)startAnimation
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
     self.continuousSwitch.on = YES;
 }
 
@@ -81,6 +81,14 @@
     else
     {
         [self stopAnimation];
+    }
+}
+
+- (IBAction)toggleIndeterminate:(id)sender
+{
+    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.progressView, self.largeProgressView, self.largestProgressView, nil])
+    {
+        progressView.indeterminate = self.indeterminateSwitch.on;
     }
 }
 
