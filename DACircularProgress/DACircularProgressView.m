@@ -213,7 +213,7 @@
 - (NSInteger)indeterminate
 {
     CAAnimation *spinAnimation = [self.layer animationForKey:@"indeterminateAnimation"];
-    return spinAnimation;
+    return spinAnimation == nil ? 0 : 1;
 }
 
 - (void)setIndeterminate:(NSInteger)indeterminate
