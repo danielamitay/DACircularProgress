@@ -12,7 +12,7 @@
 @interface ViewController : UIViewController
 
 @property (strong, nonatomic) DACircularProgressView *progressView;
-@property (strong, nonatomic) DACircularProgressView *largeProgressView;
+@property (strong, nonatomic) IBOutlet DACircularProgressView *largeProgressView;
 @property (strong, nonatomic) IBOutlet DACircularProgressView *largestProgressView;
 @property (strong, nonatomic) IBOutlet UIProgressView *linearProgressView;
 
