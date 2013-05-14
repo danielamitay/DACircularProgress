@@ -22,15 +22,29 @@
 
 @implementation DACircularProgressLayer
 
-@dynamic trackTintColor;
-@dynamic progressTintColor;
-@dynamic roundedCorners;
-@dynamic thicknessRatio;
-@dynamic progress;
+@synthesize trackTintColor = _trackTintColor;
+@synthesize progressTintColor = _progressTintColor;
+@synthesize roundedCorners = _roundedCorners;
+@synthesize thicknessRatio = _thicknessRatio;
+@synthesize progress = _progress;
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
     return [key isEqualToString:@"progress"] ? YES : [super needsDisplayForKey:key];
+}
+
+- (id)initWithLayer:(DACircularProgressLayer *)layer
+{
+    self = [super initWithLayer:layer];
+    if (self)
+    {
+        self.trackTintColor = layer.trackTintColor;
+        self.progressTintColor = layer.progressTintColor;
+        self.roundedCorners = layer.roundedCorners;
+        self.thicknessRatio = layer.thicknessRatio;
+        self.progress = layer.progress;
+    }
+    return self;
 }
 
 - (void)drawInContext:(CGContextRef)context
@@ -86,6 +100,12 @@
 
 @end
 
+@interface DACircularProgressView ()
+
+- (void)setup;
+
+@end
+
 @implementation DACircularProgressView
 
 + (void) initialize
@@ -98,9 +118,6 @@
     [appearance setProgressTintColor:[UIColor whiteColor]];
     [appearance setThicknessRatio:0.3f];
     [appearance setRoundedCorners:NO];
-    
-    [appearance setIndeterminateDuration:2.0f];
-    [appearance setIndeterminate:NO];
 }
 
 + (Class)layerClass
@@ -123,7 +140,17 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.backgroundColor = [UIColor clearColor];
+        [self setup];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self setup];
     }
     return self;
 }
@@ -210,26 +237,9 @@
     [self.circularProgressLayer setNeedsDisplay];
 }
 
-- (NSInteger)indeterminate
+- (void)setup
 {
-    CAAnimation *spinAnimation = [self.layer animationForKey:@"indeterminateAnimation"];
-    return spinAnimation == nil ? 0 : 1;
-}
-
-- (void)setIndeterminate:(NSInteger)indeterminate
-{
-    if (indeterminate && !self.indeterminate)
-    {
-        CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        spinAnimation.byValue = [NSNumber numberWithFloat:2.0f*M_PI];
-        spinAnimation.duration = self.indeterminateDuration;
-        spinAnimation.repeatCount = HUGE_VALF;
-        [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
-    }
-    else
-    {
-        [self.layer removeAnimationForKey:@"indeterminateAnimation"];
-    }
+    self.backgroundColor = [UIColor clearColor];
 }
 
 @end
