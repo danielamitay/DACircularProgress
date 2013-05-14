@@ -44,7 +44,7 @@
 						<string key="NSFrame">{{20, 8}, {280, 9}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="748609496"/>
+						<reference key="NSNextKeyView" ref="157207722"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -55,7 +55,7 @@
 						<string key="NSFrame">{{80, 207}, {160, 160}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="470436956"/>
+						<reference key="NSNextKeyView" ref="688712821"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -185,18 +185,18 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 					</object>
-					<object class="IBUIView" id="470436956">
+					<object class="IBUIView" id="157207722">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{212, 267}, {100, 100}}</string>
+						<string key="NSFrame">{{110, 85}, {100, 100}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="688712821"/>
+						<reference key="NSNextKeyView" ref="748609496"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="174626132">
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="550360354">
 								<int key="NSID">2</int>
 							</object>
 						</object>
@@ -210,7 +210,7 @@
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MC43NQA</bytes>
-					<reference key="NSCustomColorSpace" ref="174626132"/>
+					<reference key="NSCustomColorSpace" ref="550360354"/>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -226,14 +226,6 @@
 						<reference key="destination" ref="774585933"/>
 					</object>
 					<int key="connectionID">7</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">largestProgressView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="748609496"/>
-					</object>
-					<int key="connectionID">9</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -274,6 +266,22 @@
 						<reference key="destination" ref="254519500"/>
 					</object>
 					<int key="connectionID">42</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">largeProgressView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="157207722"/>
+					</object>
+					<int key="connectionID">48</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">largestProgressView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="748609496"/>
+					</object>
+					<int key="connectionID">49</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -334,7 +342,7 @@
 							<reference ref="748609496"/>
 							<reference ref="25264032"/>
 							<reference ref="254519500"/>
-							<reference ref="470436956"/>
+							<reference ref="157207722"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -380,8 +388,8 @@
 						<reference key="parent" ref="774585933"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">43</int>
-						<reference key="object" ref="470436956"/>
+						<int key="objectID">47</int>
+						<reference key="object" ref="157207722"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</array>
@@ -398,8 +406,8 @@
 				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="38.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="43.CustomClassName">DACircularProgressView</string>
-				<string key="43.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="47.CustomClassName">DACircularProgressView</string>
+				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.CustomClassName">DACircularProgressView</string>
 				<dictionary class="NSMutableDictionary" key="8.IBAttributePlaceholdersKey"/>
@@ -409,7 +417,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">43</int>
+			<int key="maxID">49</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -446,6 +454,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="continuousSwitch">UISwitch</string>
 						<string key="indeterminateSwitch">UISwitch</string>
+						<string key="largeProgressView">DACircularProgressView</string>
 						<string key="largestProgressView">DACircularProgressView</string>
 						<string key="linearProgressView">UIProgressView</string>
 						<string key="progressLabel">UILabel</string>
@@ -459,6 +468,10 @@
 						<object class="IBToOneOutletInfo" key="indeterminateSwitch">
 							<string key="name">indeterminateSwitch</string>
 							<string key="candidateClassName">UISwitch</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="largeProgressView">
+							<string key="name">largeProgressView</string>
+							<string key="candidateClassName">DACircularProgressView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="largestProgressView">
 							<string key="name">largestProgressView</string>
