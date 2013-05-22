@@ -26,6 +26,8 @@ self.progressView.trackTintColor = [UIColor clearColor];
 [self.view addSubview:self.progressView];
 ```
 
+- You can also use IB by adding a UIView outlet and setting its class to `DACircularProgress`
+
 ## Notes
 
 ### Compatibility

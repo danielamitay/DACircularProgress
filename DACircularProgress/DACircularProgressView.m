@@ -86,6 +86,12 @@
 
 @end
 
+@interface DACircularProgressView ()
+
+- (void)setup;
+
+@end
+
 @implementation DACircularProgressView
 
 + (void) initialize
@@ -123,9 +129,20 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.backgroundColor = [UIColor clearColor];
+        [self setup];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self setup];
+    }
+    return self;
+    
 }
 
 - (void)didMoveToWindow
@@ -231,5 +248,12 @@
         [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     }
 }
+
+- (void)setup
+{
+    self.backgroundColor = [UIColor clearColor];
+}
+
+
 
 @end
