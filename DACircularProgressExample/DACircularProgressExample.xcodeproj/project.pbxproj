@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6390AF421750275200C3B2F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6390AF411750275200C3B2F2 /* Default-568h@2x.png */; };
 		63B7813114E0BBE60009EE1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B7813014E0BBE60009EE1F /* UIKit.framework */; };
 		63B7813314E0BBE60009EE1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B7813214E0BBE60009EE1F /* Foundation.framework */; };
 		63B7813514E0BBE60009EE1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B7813414E0BBE60009EE1F /* CoreGraphics.framework */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6390AF411750275200C3B2F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		63B7812C14E0BBE60009EE1F /* DACircularProgressExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DACircularProgressExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B7813014E0BBE60009EE1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63B7813214E0BBE60009EE1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +58,7 @@
 		63B7812114E0BBE60009EE1F = {
 			isa = PBXGroup;
 			children = (
+				6390AF411750275200C3B2F2 /* Default-568h@2x.png */,
 				63B7814D14E0BC770009EE1F /* DACircularProgress */,
 				63B7813614E0BBE60009EE1F /* DACircularProgressExample */,
 				63B7812F14E0BBE60009EE1F /* Frameworks */,
@@ -172,6 +175,7 @@
 			files = (
 				63B7813B14E0BBE60009EE1F /* InfoPlist.strings in Resources */,
 				63B7814714E0BBE60009EE1F /* ViewController.xib in Resources */,
+				6390AF421750275200C3B2F2 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
