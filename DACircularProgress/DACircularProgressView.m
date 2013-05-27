@@ -88,8 +88,6 @@
 
 @interface DACircularProgressView ()
 
-- (void)setup;
-
 @end
 
 @implementation DACircularProgressView
@@ -102,6 +100,7 @@
     id appearance = [self appearance];
     [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
     [appearance setProgressTintColor:[UIColor whiteColor]];
+    [appearance setBackgroundColor:[UIColor clearColor]];
     [appearance setThicknessRatio:0.3f];
     [appearance setRoundedCorners:NO];
     
@@ -121,28 +120,7 @@
 
 - (id)init
 {
-    return [self initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-        [self setup];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        [self setup];
-    }
-    return self;
-    
+    return [super initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
 }
 
 - (void)didMoveToWindow
@@ -249,12 +227,5 @@
         [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     }
 }
-
-- (void)setup
-{
-    self.backgroundColor = [UIColor clearColor];
-}
-
-
 
 @end
