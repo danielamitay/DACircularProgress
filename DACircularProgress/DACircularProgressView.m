@@ -147,7 +147,8 @@
 
 - (void)didMoveToWindow
 {
-    self.circularProgressLayer.contentsScale = [UIScreen mainScreen].scale;
+    CGFloat windowContentsScale = self.window.screen.scale;
+    self.circularProgressLayer.contentsScale = windowContentsScale;
 }
 
 #pragma mark - Progress
