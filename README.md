@@ -1,8 +1,8 @@
 ## DACircularProgress
 
-DACircularProgress is a UIView subclass with circular UIProgressView properties.
+`DACircularProgress` is a `UIView` subclass with circular `UIProgressView` properties.
 
-It was built to be an imitation of Facebook's photo progress indicator.
+It was originally built to be an imitation of Facebook's photo progress indicator.
 
 View the included example project for a demonstration.
 
@@ -10,10 +10,10 @@ View the included example project for a demonstration.
 
 ## Installation
 
-To use DACircularProgress:
+To use `DACircularProgress`:
 
 - Copy over the `DACircularProgress` folder to your project folder.
-- Make sure that your project includes the QuartzCore.framework.
+- Make sure that your project includes `<QuartzCore.framework>`.
 - `#import "DACircularProgressView.h"`
 
 ### Example Code
@@ -26,7 +26,7 @@ self.progressView.trackTintColor = [UIColor clearColor];
 [self.view addSubview:self.progressView];
 ```
 
-- You can also use IB by adding a UIView outlet and setting its class to `DACircularProgress`
+- You can also use Interface Builder by adding a `UIView` element and setting its class to `DACircularProgress`
 
 ## Notes
 
@@ -35,7 +35,8 @@ self.progressView.trackTintColor = [UIColor clearColor];
 iOS5.0+
 
 ### Automatic Reference Counting (ARC) support
-DACircularProgress was made with ARC enabled by default.
+
+`DACircularProgress` was made with ARC enabled by default.
 
 ## Contact
 
@@ -45,17 +46,17 @@ DACircularProgress was made with ARC enabled by default.
 - [LinkedIn](http://www.linkedin.com/in/danielamitay)
 - [Email](hello@danielamitay.com)
 
-If you use/enjoy DACircularProgress, let me know!
+If you use/enjoy `DACircularProgress`, let me know!
 
 ## Credits
 
-DACircularProgress is brought to you by [Daniel Amitay](http://www.amitay.us) and [contributors to the project](https://github.com/danielamitay/DACircularProgress/contributors). A special thanks to [Cédric Luthi](https://github.com/0xced) for a significant amount of changes. If you have feature suggestions or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/danielamitay/DACircularProgress/issues/new).
+`DACircularProgress` is brought to you by [Daniel Amitay](http://www.amitay.us) and [contributors to the project](https://github.com/danielamitay/DACircularProgress/contributors). A special thanks to [Cédric Luthi](https://github.com/0xced) for a significant amount of changes. If you have feature suggestions or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/danielamitay/DACircularProgress/issues/new).
 
 ## License
 
 ### MIT License
 
-Copyright (c) 2012 Daniel Amitay (http://danielamitay.com)
+Copyright (c) 2013 Daniel Amitay (http://danielamitay.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
