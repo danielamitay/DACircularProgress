@@ -143,6 +143,9 @@
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated
 {
+    [self.layer removeAnimationForKey:@"indeterminateAnimation"];
+    [self.circularProgressLayer removeAnimationForKey:@"progress"];
+    
     CGFloat pinnedProgress = MIN(MAX(progress, 0.0f), 1.0f);
     if (animated)
     {
