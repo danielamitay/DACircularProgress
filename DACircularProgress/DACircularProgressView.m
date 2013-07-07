@@ -143,6 +143,9 @@
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated
 {
+    [self.layer removeAnimationForKey:@"indeterminateAnimation"];
+    [self.circularProgressLayer removeAnimationForKey:@"progress"];
+    
     CGFloat pinnedProgress = MIN(MAX(progress, 0.0f), 1.0f);
     if (animated)
     {
@@ -217,7 +220,7 @@
     if (indeterminate && !self.indeterminate)
     {
         CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        spinAnimation.byValue = [NSNumber numberWithFloat:2.0f*M_PI];
+        spinAnimation.byValue = [NSNumber numberWithFloat:indeterminate > 0 ? 2.0f*M_PI : -2.0f*M_PI];
         spinAnimation.duration = self.indeterminateDuration;
         spinAnimation.repeatCount = HUGE_VALF;
         [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
