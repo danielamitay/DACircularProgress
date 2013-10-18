@@ -70,17 +70,34 @@
         CGFloat yOffset = radius * (1.0f + ((1.0f - (self.thicknessRatio / 2.0f)) * sinf(radians)));
         CGPoint endPoint = CGPointMake(xOffset, yOffset);
         
-        CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x - pathWidth / 2.0f, 0.0f, pathWidth, pathWidth));
+        CGRect startEllipseRect = (CGRect) {
+            .origin.x = centerPoint.x - pathWidth / 2.0f,
+            .origin.y = 0.0f,
+            .size.width = pathWidth,
+            .size.height = pathWidth
+        };
+        CGContextAddEllipseInRect(context, startEllipseRect);
         CGContextFillPath(context);
         
-        CGContextAddEllipseInRect(context, CGRectMake(endPoint.x - pathWidth / 2.0f, endPoint.y - pathWidth / 2.0f, pathWidth, pathWidth));
+        CGRect endEllipseRect = (CGRect) {
+            .origin.x = endPoint.x - pathWidth / 2.0f,
+            .origin.y = endPoint.y - pathWidth / 2.0f,
+            .size.width = pathWidth,
+            .size.height = pathWidth
+        };
+        CGContextAddEllipseInRect(context, endEllipseRect);
         CGContextFillPath(context);
     }
     
     CGContextSetBlendMode(context, kCGBlendModeClear);
     CGFloat innerRadius = radius * (1.0f - self.thicknessRatio);
-    CGPoint newCenterPoint = CGPointMake(centerPoint.x - innerRadius, centerPoint.y - innerRadius);
-    CGContextAddEllipseInRect(context, CGRectMake(newCenterPoint.x, newCenterPoint.y, innerRadius * 2.0f, innerRadius * 2.0f));
+    CGRect clearRect = (CGRect) {
+        .origin.x = centerPoint.x - innerRadius,
+        .origin.y = centerPoint.y - innerRadius,
+        .size.width = innerRadius * 2.0f,
+        .size.height = innerRadius * 2.0f
+    };
+    CGContextAddEllipseInRect(context, clearRect);
     CGContextFillPath(context);
 }
 
