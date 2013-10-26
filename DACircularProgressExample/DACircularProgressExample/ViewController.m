@@ -44,13 +44,15 @@
 
 - (void)progressChange
 {
-    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.linearProgressView, self.progressView, self.largeProgressView, self.largestProgressView, nil])
-    {
-        CGFloat progress = ![self.timer isValid] ? self.stepper.value / 10.f : progressView.progress + 0.01f;
+    NSArray *progressViews = @[self.linearProgressView,
+                               self.progressView,
+                               self.largeProgressView,
+                               self.largestProgressView];
+    for (DACircularProgressView *progressView in progressViews) {
+        CGFloat progress = ![self.timer isValid] ? self.stepper.value / 10.0f : progressView.progress + 0.01f;
         [progressView setProgress:progress animated:YES];
         
-        if (progressView.progress >= 1.0f && [self.timer isValid])
-        {
+        if (progressView.progress >= 1.0f && [self.timer isValid]) {
             [progressView setProgress:0.f animated:YES];
         }
         
@@ -60,7 +62,11 @@
 
 - (void)startAnimation
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.03
+                                                  target:self
+                                                selector:@selector(progressChange)
+                                                userInfo:nil
+                                                 repeats:YES];
     self.continuousSwitch.on = YES;
 }
 
@@ -73,20 +79,19 @@
 
 - (IBAction)toggleAnimation:(id)sender
 {
-    if (self.continuousSwitch.on)
-    {
+    if (self.continuousSwitch.on) {
         [self startAnimation];
-    }
-    else
-    {
+    } else {
         [self stopAnimation];
     }
 }
 
 - (IBAction)toggleIndeterminate:(id)sender
 {
-    for (DACircularProgressView *progressView in [NSArray arrayWithObjects:self.progressView, self.largeProgressView, self.largestProgressView, nil])
-    {
+    NSArray *progressViews = @[self.progressView,
+                               self.largeProgressView,
+                               self.largestProgressView];
+    for (DACircularProgressView *progressView in progressViews) {
         progressView.indeterminate = self.indeterminateSwitch.on;
     }
 }

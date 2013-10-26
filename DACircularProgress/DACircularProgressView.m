@@ -30,7 +30,11 @@
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
-    return [key isEqualToString:@"progress"] ? YES : [super needsDisplayForKey:key];
+    if ([key isEqualToString:@"progress"]) {
+        return YES;
+    } else {
+        return [super needsDisplayForKey:key];
+    }
 }
 
 - (void)drawInContext:(CGContextRef)context
@@ -51,8 +55,7 @@
     CGContextFillPath(context);
     CGPathRelease(trackPath);
     
-    if (progress > 0.0f)
-    {
+    if (progress > 0.0f) {
         CGContextSetFillColorWithColor(context, self.progressTintColor.CGColor);
         CGMutablePathRef progressPath = CGPathCreateMutable();
         CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
@@ -63,8 +66,7 @@
         CGPathRelease(progressPath);
     }
     
-    if (progress > 0.0f && self.roundedCorners)
-    {
+    if (progress > 0.0f && self.roundedCorners) {
         CGFloat pathWidth = radius * self.thicknessRatio;
         CGFloat xOffset = radius * (1.0f + ((1.0f - (self.thicknessRatio / 2.0f)) * cosf(radians)));
         CGFloat yOffset = radius * (1.0f + ((1.0f - (self.thicknessRatio / 2.0f)) * sinf(radians)));
@@ -111,18 +113,17 @@
 
 + (void) initialize
 {
-    if (self != [DACircularProgressView class])
-        return;
-    
-    id appearance = [self appearance];
-    [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
-    [appearance setProgressTintColor:[UIColor whiteColor]];
-    [appearance setBackgroundColor:[UIColor clearColor]];
-    [appearance setThicknessRatio:0.3f];
-    [appearance setRoundedCorners:NO];
-    
-    [appearance setIndeterminateDuration:2.0f];
-    [appearance setIndeterminate:NO];
+    if (self == [DACircularProgressView class]) {
+        id appearance = [self appearance];
+        [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
+        [appearance setProgressTintColor:[UIColor whiteColor]];
+        [appearance setBackgroundColor:[UIColor clearColor]];
+        [appearance setThicknessRatio:0.3f];
+        [appearance setRoundedCorners:NO];
+        
+        [appearance setIndeterminateDuration:2.0f];
+        [appearance setIndeterminate:NO];
+    }
 }
 
 + (Class)layerClass
@@ -164,17 +165,14 @@
     [self.circularProgressLayer removeAnimationForKey:@"progress"];
     
     CGFloat pinnedProgress = MIN(MAX(progress, 0.0f), 1.0f);
-    if (animated)
-    {
+    if (animated) {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
         animation.duration = fabsf(self.progress - pinnedProgress); // Same duration as UIProgressView animation
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
         [self.circularProgressLayer addAnimation:animation forKey:@"progress"];
-    }
-    else
-    {
+    } else {
         [self.circularProgressLayer setNeedsDisplay];
     }
     self.circularProgressLayer.progress = pinnedProgress;
@@ -234,16 +232,13 @@
 
 - (void)setIndeterminate:(NSInteger)indeterminate
 {
-    if (indeterminate && !self.indeterminate)
-    {
+    if (indeterminate && !self.indeterminate) {
         CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         spinAnimation.byValue = [NSNumber numberWithFloat:indeterminate > 0 ? 2.0f*M_PI : -2.0f*M_PI];
         spinAnimation.duration = self.indeterminateDuration;
         spinAnimation.repeatCount = HUGE_VALF;
         [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
-    }
-    else
-    {
+    } else {
         [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     }
 }
