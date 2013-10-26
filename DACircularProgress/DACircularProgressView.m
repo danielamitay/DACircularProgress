@@ -114,7 +114,7 @@
 + (void) initialize
 {
     if (self == [DACircularProgressView class]) {
-        id appearance = [self appearance];
+        id appearance = [DACircularProgressView appearance];
         [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
         [appearance setProgressTintColor:[UIColor whiteColor]];
         [appearance setBackgroundColor:[UIColor clearColor]];
