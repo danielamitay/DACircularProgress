@@ -44,12 +44,12 @@
     CGFloat radius = MIN(rect.size.height, rect.size.width) / 2.0f;
     
     CGFloat progress = MIN(self.progress, 1.0f - FLT_EPSILON);
-    CGFloat radians = (progress * 2.0f * M_PI) - M_PI_2;
+    CGFloat radians = (float)((progress * 2.0f * M_PI) - M_PI_2);
     
     CGContextSetFillColorWithColor(context, self.trackTintColor.CGColor);
     CGMutablePathRef trackPath = CGPathCreateMutable();
     CGPathMoveToPoint(trackPath, NULL, centerPoint.x, centerPoint.y);
-    CGPathAddArc(trackPath, NULL, centerPoint.x, centerPoint.y, radius, 2.0f * M_PI, 0.0f, TRUE);
+    CGPathAddArc(trackPath, NULL, centerPoint.x, centerPoint.y, radius, (float)(2.0f * M_PI), 0.0f, TRUE);
     CGPathCloseSubpath(trackPath);
     CGContextAddPath(context, trackPath);
     CGContextFillPath(context);
@@ -59,7 +59,7 @@
         CGContextSetFillColorWithColor(context, self.progressTintColor.CGColor);
         CGMutablePathRef progressPath = CGPathCreateMutable();
         CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, 3.0f * M_PI_2, radians, NO);
+        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, (float)(3.0f * M_PI_2), radians, NO);
         CGPathCloseSubpath(progressPath);
         CGContextAddPath(context, progressPath);
         CGContextFillPath(context);
@@ -114,15 +114,15 @@
 + (void) initialize
 {
     if (self == [DACircularProgressView class]) {
-        id appearance = [DACircularProgressView appearance];
-        [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
-        [appearance setProgressTintColor:[UIColor whiteColor]];
-        [appearance setBackgroundColor:[UIColor clearColor]];
-        [appearance setThicknessRatio:0.3f];
-        [appearance setRoundedCorners:NO];
+        DACircularProgressView *circularProgressViewAppearance = [DACircularProgressView appearance];
+        [circularProgressViewAppearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
+        [circularProgressViewAppearance setProgressTintColor:[UIColor whiteColor]];
+        [circularProgressViewAppearance setBackgroundColor:[UIColor clearColor]];
+        [circularProgressViewAppearance setThicknessRatio:0.3f];
+        [circularProgressViewAppearance setRoundedCorners:NO];
         
-        [appearance setIndeterminateDuration:2.0f];
-        [appearance setIndeterminate:NO];
+        [circularProgressViewAppearance setIndeterminateDuration:2.0f];
+        [circularProgressViewAppearance setIndeterminate:NO];
     }
 }
 
