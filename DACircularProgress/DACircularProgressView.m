@@ -17,6 +17,7 @@
 @property(nonatomic) NSInteger roundedCorners;
 @property(nonatomic) CGFloat thicknessRatio;
 @property(nonatomic) CGFloat progress;
+@property(nonatomic) NSInteger clockwiseProgress;
 
 @end
 
@@ -43,8 +44,18 @@
     CGPoint centerPoint = CGPointMake(rect.size.width / 2.0f, rect.size.height / 2.0f);
     CGFloat radius = MIN(rect.size.height, rect.size.width) / 2.0f;
     
+    BOOL clockwise = (self.clockwiseProgress != 0);
+    
     CGFloat progress = MIN(self.progress, 1.0f - FLT_EPSILON);
-    CGFloat radians = (float)((progress * 2.0f * M_PI) - M_PI_2);
+    CGFloat radians = 0;
+    if (clockwise)
+    {
+        radians = (float)((progress * 2.0f * M_PI) - M_PI_2);
+    }
+    else
+    {
+        radians = (float)(3 * M_PI_2 - (progress * 2.0f * M_PI));
+    }
     
     CGContextSetFillColorWithColor(context, self.trackTintColor.CGColor);
     CGMutablePathRef trackPath = CGPathCreateMutable();
@@ -59,7 +70,7 @@
         CGContextSetFillColorWithColor(context, self.progressTintColor.CGColor);
         CGMutablePathRef progressPath = CGPathCreateMutable();
         CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, (float)(3.0f * M_PI_2), radians, NO);
+        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, (float)(3.0f * M_PI_2), radians, !clockwise);
         CGPathCloseSubpath(progressPath);
         CGContextAddPath(context, progressPath);
         CGContextFillPath(context);
@@ -120,6 +131,7 @@
         [circularProgressViewAppearance setBackgroundColor:[UIColor clearColor]];
         [circularProgressViewAppearance setThicknessRatio:0.3f];
         [circularProgressViewAppearance setRoundedCorners:NO];
+        [circularProgressViewAppearance setClockwiseProgress:YES];
         
         [circularProgressViewAppearance setIndeterminateDuration:2.0f];
         [circularProgressViewAppearance setIndeterminate:NO];
@@ -241,6 +253,17 @@
     } else {
         [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     }
+}
+
+- (NSInteger)clockwiseProgress
+{
+    return self.circularProgressLayer.clockwiseProgress;
+}
+
+- (void)setClockwiseProgress:(NSInteger)clockwiseProgres
+{
+    self.circularProgressLayer.clockwiseProgress = clockwiseProgres;
+    [self.circularProgressLayer setNeedsDisplay];
 }
 
 @end

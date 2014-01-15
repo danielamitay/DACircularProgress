@@ -38,6 +38,7 @@
     self.largestProgressView.trackTintColor = [UIColor blackColor];
     self.largestProgressView.progressTintColor = [UIColor yellowColor];
     self.largestProgressView.thicknessRatio = 1.0f;
+    self.largestProgressView.clockwiseProgress = NO;
     
     [self startAnimation];
 }
