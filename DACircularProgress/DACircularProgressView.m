@@ -28,6 +28,7 @@
 @dynamic roundedCorners;
 @dynamic thicknessRatio;
 @dynamic progress;
+@dynamic clockwiseProgress;
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
