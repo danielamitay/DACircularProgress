@@ -158,6 +158,7 @@
 {
     CGFloat windowContentsScale = self.window.screen.scale;
     self.circularProgressLayer.contentsScale = windowContentsScale;
+    [self.circularProgressLayer setNeedsDisplay];
 }
 
 #pragma mark - Progress
