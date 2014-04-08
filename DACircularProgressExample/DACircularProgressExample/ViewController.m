@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DALabeledCircularProgressView.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) NSTimer *timer;
@@ -40,6 +41,15 @@
     self.largestProgressView.thicknessRatio = 1.0f;
     self.largestProgressView.clockwiseProgress = NO;
     
+    // Labeled progress views
+    self.labeledProgressView = [[DALabeledCircularProgressView alloc]
+                                initWithFrame:CGRectMake(200.0f, 20.0f, 60.0f, 60.0f)];
+    self.labeledProgressView.roundedCorners = YES;
+    [self.view addSubview:self.labeledProgressView];
+    
+    self.labeledLargeProgressView.roundedCorners = NO;
+    [self.view addSubview:self.labeledLargeProgressView];
+    
     [self startAnimation];
 }
 
@@ -59,6 +69,22 @@
         
         self.progressLabel.text = [NSString stringWithFormat:@"%.2f", progressView.progress];
     }
+    
+    // Labeled progress views
+    NSArray *labeledProgressViews = @[self.labeledProgressView,
+                                      self.labeledLargeProgressView];
+    for (DALabeledCircularProgressView *labeledProgressView in labeledProgressViews) {
+        CGFloat progress = ![self.timer isValid] ? self.stepper.value / 10.0f : labeledProgressView.progress + 0.01f;
+        [labeledProgressView setProgress:progress animated:YES];
+        
+        if (labeledProgressView.progress >= 1.0f && [self.timer isValid]) {
+            [labeledProgressView setProgress:0.f animated:YES];
+        }
+        
+        labeledProgressView.progressLabel.text = [NSString stringWithFormat:@"%.2f", labeledProgressView.progress];
+    }
+    
+    
 }
 
 - (void)startAnimation
