@@ -14,18 +14,32 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self initializeLabel];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    // Drawing code
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initializeLabel];
+    }
+    return self;
 }
-*/
+
+#pragma mark - Internal methods
+
+/**
+ Creates and initializes
+ -[DALabeledCircularProgressView progressLabel].
+ */
+- (void)initializeLabel
+{
+    self.progressLabel = [[UILabel alloc]
+                          initWithFrame:self.bounds];
+    self.progressLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.progressLabel];
+}
 
 @end
