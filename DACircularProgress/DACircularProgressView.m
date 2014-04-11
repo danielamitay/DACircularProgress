@@ -175,6 +175,13 @@
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated
 {
+    [self setProgress:progress animated:animated initialDelay:0.0];
+}
+
+- (void)setProgress:(CGFloat)progress
+           animated:(BOOL)animated
+       initialDelay:(CFTimeInterval)initialDelay
+{
     [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     [self.circularProgressLayer removeAnimationForKey:@"progress"];
     
@@ -185,11 +192,19 @@
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
+        animation.beginTime = CACurrentMediaTime() + initialDelay;
+        animation.delegate = self;
         [self.circularProgressLayer addAnimation:animation forKey:@"progress"];
     } else {
         [self.circularProgressLayer setNeedsDisplay];
+        self.circularProgressLayer.progress = pinnedProgress;
     }
-    self.circularProgressLayer.progress = pinnedProgress;
+}
+
+- (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag
+{
+   NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
+   self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
 }
 
 #pragma mark - UIAppearance methods
