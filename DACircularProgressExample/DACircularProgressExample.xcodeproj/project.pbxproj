@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035FEA3418F3ACBA0099BBFA /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035FEA3318F3ACBA0099BBFA /* DALabeledCircularProgressView.m */; };
 		6390AF421750275200C3B2F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6390AF411750275200C3B2F2 /* Default-568h@2x.png */; };
 		63B7813114E0BBE60009EE1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B7813014E0BBE60009EE1F /* UIKit.framework */; };
 		63B7813314E0BBE60009EE1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B7813214E0BBE60009EE1F /* Foundation.framework */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		035FEA3218F3ACBA0099BBFA /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		035FEA3318F3ACBA0099BBFA /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
 		6390AF411750275200C3B2F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		63B7812C14E0BBE60009EE1F /* DACircularProgressExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DACircularProgressExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B7813014E0BBE60009EE1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -117,6 +120,8 @@
 			children = (
 				63B7814E14E0BC780009EE1F /* DACircularProgressView.h */,
 				63B7814F14E0BC780009EE1F /* DACircularProgressView.m */,
+				035FEA3218F3ACBA0099BBFA /* DALabeledCircularProgressView.h */,
+				035FEA3318F3ACBA0099BBFA /* DALabeledCircularProgressView.m */,
 			);
 			name = DACircularProgress;
 			path = ../DACircularProgress;
@@ -190,6 +195,7 @@
 				63B7814114E0BBE60009EE1F /* AppDelegate.m in Sources */,
 				63B7814414E0BBE60009EE1F /* ViewController.m in Sources */,
 				63B7815014E0BC780009EE1F /* DACircularProgressView.m in Sources */,
+				035FEA3418F3ACBA0099BBFA /* DALabeledCircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
