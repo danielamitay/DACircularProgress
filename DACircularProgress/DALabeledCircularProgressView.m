@@ -39,6 +39,7 @@
     self.progressLabel = [[UILabel alloc]
                           initWithFrame:self.bounds];
     self.progressLabel.textAlignment = NSTextAlignmentCenter;
+    self.progressLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.progressLabel];
 }
 
