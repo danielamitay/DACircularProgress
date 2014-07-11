@@ -190,6 +190,7 @@
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
         animation.duration = fabsf(self.progress - pinnedProgress); // Same duration as UIProgressView animation
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.fillMode = kCAFillModeForwards;
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
         animation.beginTime = CACurrentMediaTime() + initialDelay;
