@@ -262,12 +262,14 @@
 
 - (void)setIndeterminate:(NSInteger)indeterminate
 {
-    if (indeterminate && !self.indeterminate) {
-        CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        spinAnimation.byValue = [NSNumber numberWithDouble:indeterminate > 0 ? 2.0f*M_PI : -2.0f*M_PI];
-        spinAnimation.duration = self.indeterminateDuration;
-        spinAnimation.repeatCount = HUGE_VALF;
-        [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
+    if (indeterminate) {
+        if (!self.indeterminate) {
+            CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+            spinAnimation.byValue = [NSNumber numberWithDouble:indeterminate > 0 ? 2.0f*M_PI : -2.0f*M_PI];
+            spinAnimation.duration = self.indeterminateDuration;
+            spinAnimation.repeatCount = HUGE_VALF;
+            [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
+        }
     } else {
         [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     }
