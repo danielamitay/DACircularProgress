@@ -122,6 +122,9 @@
 @end
 
 @implementation DACircularProgressView
+{
+    void (^_completionBlock)(void);
+}
 
 + (void) initialize
 {
@@ -182,6 +185,8 @@
            animated:(BOOL)animated
        initialDelay:(CFTimeInterval)initialDelay
 {
+    _completionBlock = nil;
+    
     [self.layer removeAnimationForKey:@"indeterminateAnimation"];
     [self.circularProgressLayer removeAnimationForKey:@"progress"];
     
@@ -202,10 +207,51 @@
     }
 }
 
+
+- (void)setProgress:(CGFloat)progress
+           duration:(CGFloat)duration
+       initialDelay:(CFTimeInterval)initialDelay
+           animated:(BOOL)animated
+         completion:(void (^)(void))blockCompletion
+{
+    _completionBlock = blockCompletion;
+    
+    [self.layer removeAnimationForKey:@"indeterminateAnimation"];
+    [self.circularProgressLayer removeAnimationForKey:@"progress"];
+    
+    CGFloat pinnedProgress = MIN(MAX(progress, 0.0f), 1.0f);
+    if (animated)
+    {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
+        animation.duration = MAX(duration,fabsf(self.progress - pinnedProgress)); // custom duration
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+        animation.fillMode = kCAFillModeForwards;
+        animation.fromValue = [NSNumber numberWithFloat:self.progress];
+        animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
+        animation.beginTime = CACurrentMediaTime() + initialDelay;
+        animation.delegate = self;
+        [self.circularProgressLayer addAnimation:animation forKey:@"progress"];
+    }
+    else
+    {
+        [self.circularProgressLayer setNeedsDisplay];
+        self.circularProgressLayer.progress = pinnedProgress;
+    }
+}
+
+- (void)stopAnimationWithoutRunningCompletionBlock
+{
+    [self.layer removeAnimationForKey:@"indeterminateAnimation"];
+    [self.circularProgressLayer removeAnimationForKey:@"progress"];
+}
+      
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag
 {
-   NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
-   self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
+    NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
+    self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
+
+    if (_completionBlock)
+        _completionBlock();
 }
 
 #pragma mark - UIAppearance methods

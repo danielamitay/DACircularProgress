@@ -22,5 +22,7 @@
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated initialDelay:(CFTimeInterval)initialDelay;
+- (void)setProgress:(CGFloat)progress duration:(CGFloat)duration initialDelay:(CFTimeInterval)initialDelay animated:(BOOL)animated completion:(void (^)(void))blockCompletion;
+- (void)stopAnimationWithoutRunningCompletionBlock;
 
 @end
