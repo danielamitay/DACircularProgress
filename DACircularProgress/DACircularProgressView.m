@@ -210,9 +210,9 @@
 
 - (void)setProgress:(CGFloat)progress
            duration:(CGFloat)duration
-           animated:(BOOL)animated
        initialDelay:(CFTimeInterval)initialDelay
-        completion:(void (^)(void))blockCompletion
+           animated:(BOOL)animated
+         completion:(void (^)(void))blockCompletion
 {
     _completionBlock = blockCompletion;
     
