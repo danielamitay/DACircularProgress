@@ -15,6 +15,7 @@
 @property(nonatomic, strong) UIColor *trackTintColor;
 @property(nonatomic, strong) UIColor *progressTintColor;
 @property(nonatomic) NSInteger roundedCorners;
+@property(nonatomic) CGFloat startPosition;
 @property(nonatomic) CGFloat thicknessRatio;
 @property(nonatomic) CGFloat progress;
 @property(nonatomic) NSInteger clockwiseProgress;
@@ -26,6 +27,7 @@
 @dynamic trackTintColor;
 @dynamic progressTintColor;
 @dynamic roundedCorners;
+@dynamic startPosition;
 @dynamic thicknessRatio;
 @dynamic progress;
 @dynamic clockwiseProgress;
@@ -45,17 +47,19 @@
     CGPoint centerPoint = CGPointMake(rect.size.width / 2.0f, rect.size.height / 2.0f);
     CGFloat radius = MIN(rect.size.height, rect.size.width) / 2.0f;
     
+    CGFloat thicknessRatio = self.thicknessRatio;
     BOOL clockwise = (self.clockwiseProgress != 0);
     
     CGFloat progress = MIN(self.progress, 1.0f - FLT_EPSILON);
+    CGFloat startRadians = -self.startPosition;
     CGFloat radians = 0;
     if (clockwise)
     {
-        radians = (float)((progress * 2.0f * M_PI) - M_PI_2);
+        radians = (float)(startRadians + (progress * 2 * M_PI));
     }
     else
     {
-        radians = (float)(3 * M_PI_2 - (progress * 2.0f * M_PI));
+        radians = (float)(startRadians - (progress * 2 * M_PI));
     }
     
     CGContextSetFillColorWithColor(context, self.trackTintColor.CGColor);
@@ -71,7 +75,7 @@
         CGContextSetFillColorWithColor(context, self.progressTintColor.CGColor);
         CGMutablePathRef progressPath = CGPathCreateMutable();
         CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, (float)(3.0f * M_PI_2), radians, !clockwise);
+        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, startRadians, radians, !clockwise);
         CGPathCloseSubpath(progressPath);
         CGContextAddPath(context, progressPath);
         CGContextFillPath(context);
@@ -79,14 +83,20 @@
     }
     
     if (progress > 0.0f && self.roundedCorners) {
-        CGFloat pathWidth = radius * self.thicknessRatio;
-        CGFloat xOffset = radius * (1.0f + ((1.0f - (self.thicknessRatio / 2.0f)) * cosf(radians)));
-        CGFloat yOffset = radius * (1.0f + ((1.0f - (self.thicknessRatio / 2.0f)) * sinf(radians)));
-        CGPoint endPoint = CGPointMake(xOffset, yOffset);
+        CGFloat pathWidth = radius * thicknessRatio;
+        CGFloat tmp = 1.0f - (thicknessRatio / 2.0f);
+        
+        CGFloat startXOffset = radius * (1.0f + (tmp * cosf(startRadians)));
+        CGFloat startYOffset = radius * (1.0f + (tmp * sinf(startRadians)));
+        CGPoint startPoint = CGPointMake(startXOffset, startYOffset);
+        
+        CGFloat endXOffset = radius * (1.0f + (tmp * cosf(radians)));
+        CGFloat endYOffset = radius * (1.0f + (tmp * sinf(radians)));
+        CGPoint endPoint = CGPointMake(endXOffset, endYOffset);
         
         CGRect startEllipseRect = (CGRect) {
-            .origin.x = centerPoint.x - pathWidth / 2.0f,
-            .origin.y = 0.0f,
+            .origin.x = startPoint.x - pathWidth / 2.0f,
+            .origin.y = startPoint.y - pathWidth / 2.0f,
             .size.width = pathWidth,
             .size.height = pathWidth
         };
@@ -104,7 +114,7 @@
     }
     
     CGContextSetBlendMode(context, kCGBlendModeClear);
-    CGFloat innerRadius = radius * (1.0f - self.thicknessRatio);
+    CGFloat innerRadius = radius * (1.0f - thicknessRatio);
     CGRect clearRect = (CGRect) {
         .origin.x = centerPoint.x - innerRadius,
         .origin.y = centerPoint.y - innerRadius,
@@ -133,6 +143,7 @@
         [circularProgressViewAppearance setThicknessRatio:0.3f];
         [circularProgressViewAppearance setRoundedCorners:NO];
         [circularProgressViewAppearance setClockwiseProgress:YES];
+        [circularProgressViewAppearance setStartPosition:DACircularStartPositionTop];
         
         [circularProgressViewAppearance setIndeterminateDuration:2.0f];
         [circularProgressViewAppearance setIndeterminate:NO];
@@ -240,6 +251,17 @@
 - (void)setRoundedCorners:(NSInteger)roundedCorners
 {
     self.circularProgressLayer.roundedCorners = roundedCorners;
+    [self.circularProgressLayer setNeedsDisplay];
+}
+
+- (CGFloat)startPosition
+{
+    return self.circularProgressLayer.startPosition;
+}
+
+- (void)setStartPosition:(CGFloat)startPosition
+{
+    self.circularProgressLayer.startPosition = startPosition;
     [self.circularProgressLayer setNeedsDisplay];
 }
 
