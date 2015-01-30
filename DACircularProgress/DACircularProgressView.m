@@ -14,6 +14,7 @@
 
 @property(nonatomic, strong) UIColor *trackTintColor;
 @property(nonatomic, strong) UIColor *progressTintColor;
+@property(nonatomic, strong) UIColor *innerTintColor;
 @property(nonatomic) NSInteger roundedCorners;
 @property(nonatomic) CGFloat thicknessRatio;
 @property(nonatomic) CGFloat progress;
@@ -25,6 +26,7 @@
 
 @dynamic trackTintColor;
 @dynamic progressTintColor;
+@dynamic innerTintColor;
 @dynamic roundedCorners;
 @dynamic thicknessRatio;
 @dynamic progress;
@@ -102,8 +104,12 @@
         CGContextAddEllipseInRect(context, endEllipseRect);
         CGContextFillPath(context);
     }
-    
-    CGContextSetBlendMode(context, kCGBlendModeClear);
+
+    if (!self.innerTintColor) {
+        CGContextSetBlendMode(context, kCGBlendModeClear);
+    } else {
+        CGContextSetFillColorWithColor(context, [self.innerTintColor CGColor]);
+    }
     CGFloat innerRadius = radius * (1.0f - self.thicknessRatio);
     CGRect clearRect = (CGRect) {
         .origin.x = centerPoint.x - innerRadius,
@@ -129,6 +135,7 @@
         DACircularProgressView *circularProgressViewAppearance = [DACircularProgressView appearance];
         [circularProgressViewAppearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
         [circularProgressViewAppearance setProgressTintColor:[UIColor whiteColor]];
+        [circularProgressViewAppearance setInnerTintColor:nil];
         [circularProgressViewAppearance setBackgroundColor:[UIColor clearColor]];
         [circularProgressViewAppearance setThicknessRatio:0.3f];
         [circularProgressViewAppearance setRoundedCorners:NO];
@@ -229,6 +236,17 @@
 - (void)setProgressTintColor:(UIColor *)progressTintColor
 {
     self.circularProgressLayer.progressTintColor = progressTintColor;
+    [self.circularProgressLayer setNeedsDisplay];
+}
+
+- (UIColor *)innerTintColor
+{
+    return self.circularProgressLayer.innerTintColor;
+}
+
+- (void)setInnerTintColor:(UIColor *)innerTintColor
+{
+    self.circularProgressLayer.innerTintColor = innerTintColor;
     [self.circularProgressLayer setNeedsDisplay];
 }
 
