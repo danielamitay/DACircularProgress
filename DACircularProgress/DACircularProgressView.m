@@ -194,7 +194,7 @@
     [self setProgress:progress
              animated:animated
          initialDelay:initialDelay
-         withDuration:fabsf(self.progress - pinnedProgress)];
+         withDuration:fabs(self.progress - pinnedProgress)];
 }
 
 - (void)setProgress:(CGFloat)progress
