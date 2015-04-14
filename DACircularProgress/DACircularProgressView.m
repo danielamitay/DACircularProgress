@@ -51,12 +51,9 @@
     
     CGFloat progress = MIN(self.progress, 1.0f - FLT_EPSILON);
     CGFloat radians = 0;
-    if (clockwise)
-    {
+    if (clockwise) {
         radians = (float)((progress * 2.0f * M_PI) - M_PI_2);
-    }
-    else
-    {
+    } else {
         radians = (float)(3 * M_PI_2 - (progress * 2.0f * M_PI));
     }
     
@@ -171,6 +168,7 @@
     [self.circularProgressLayer setNeedsDisplay];
 }
 
+
 #pragma mark - Progress
 
 - (CGFloat)progress
@@ -229,6 +227,7 @@
    NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
    self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
 }
+
 
 #pragma mark - UIAppearance methods
 

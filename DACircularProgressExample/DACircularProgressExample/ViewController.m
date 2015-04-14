@@ -42,8 +42,7 @@
     self.largestProgressView.clockwiseProgress = NO;
     
     // Labeled progress views
-    self.labeledProgressView = [[DALabeledCircularProgressView alloc]
-                                initWithFrame:CGRectMake(200.0f, 20.0f, 60.0f, 60.0f)];
+    self.labeledProgressView = [[DALabeledCircularProgressView alloc] initWithFrame:CGRectMake(200.0f, 20.0f, 60.0f, 60.0f)];
     self.labeledProgressView.roundedCorners = YES;
     [self.view addSubview:self.labeledProgressView];
     
