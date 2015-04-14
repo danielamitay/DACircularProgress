@@ -40,6 +40,7 @@
     self.largestProgressView.progressTintColor = [UIColor yellowColor];
     self.largestProgressView.thicknessRatio = 1.0f;
     self.largestProgressView.clockwiseProgress = NO;
+    self.largestProgressView.startPosition = DACircularStartPositionLeft;
     
     // Labeled progress views
     self.labeledProgressView = [[DALabeledCircularProgressView alloc]
@@ -48,6 +49,7 @@
     [self.view addSubview:self.labeledProgressView];
     
     self.labeledLargeProgressView.roundedCorners = NO;
+    self.labeledLargeProgressView.startPosition = DACircularStartPositionBottom;
     [self.view addSubview:self.labeledLargeProgressView];
     
     [self startAnimation];

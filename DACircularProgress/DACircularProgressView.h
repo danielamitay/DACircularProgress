@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+static CGFloat DACircularStartPositionRight = 0.f;
+static CGFloat DACircularStartPositionTop = M_PI_2;
+static CGFloat DACircularStartPositionLeft = M_PI;
+static CGFloat DACircularStartPositionBottom = M_PI + M_PI_2;
+
 @interface DACircularProgressView : UIView
 
 @property(nonatomic, strong) UIColor *trackTintColor UI_APPEARANCE_SELECTOR;
 @property(nonatomic, strong) UIColor *progressTintColor UI_APPEARANCE_SELECTOR;
 @property(nonatomic, strong) UIColor *innerTintColor UI_APPEARANCE_SELECTOR;
 @property(nonatomic) NSInteger roundedCorners UI_APPEARANCE_SELECTOR; // Can not use BOOL with UI_APPEARANCE_SELECTOR :-(
+@property(nonatomic) CGFloat startPosition UI_APPEARANCE_SELECTOR;
 @property(nonatomic) CGFloat thicknessRatio UI_APPEARANCE_SELECTOR;
 @property(nonatomic) NSInteger clockwiseProgress UI_APPEARANCE_SELECTOR; // Can not use BOOL with UI_APPEARANCE_SELECTOR :-(
 @property(nonatomic) CGFloat progress;
