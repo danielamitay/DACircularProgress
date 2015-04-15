@@ -209,7 +209,7 @@
     if (animated) {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
         animation.duration = duration;
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.timingFunction = self.animationTimingFunction ?: [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.fillMode = kCAFillModeForwards;
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
@@ -224,10 +224,11 @@
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag
 {
-   NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
-   self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
+   if ([self.circularProgressLayer animationForKey: @"progress"] == animation) {
+      NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
+      self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
+   }
 }
-
 
 #pragma mark - UIAppearance methods
 
