@@ -6,7 +6,7 @@ It was originally built to be an imitation of Facebook's photo progress indicato
 
 View the included example project for a demonstration.
 
-![Screenshot](https://github.com/danielamitay/DACircularProgress/raw/master/screenshot.png)
+<img src="./screenshot.png" width="375" height="668">
 
 ## Installation
 

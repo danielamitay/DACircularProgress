@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
+    self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 50.0f, 40.0f, 40.0f)];
     self.progressView.roundedCorners = YES;
     self.progressView.trackTintColor = [UIColor clearColor];
     [self.view addSubview:self.progressView];
@@ -42,7 +42,7 @@
     self.largestProgressView.clockwiseProgress = NO;
     
     // Labeled progress views
-    self.labeledProgressView = [[DALabeledCircularProgressView alloc] initWithFrame:CGRectMake(200.0f, 20.0f, 60.0f, 60.0f)];
+    self.labeledProgressView = [[DALabeledCircularProgressView alloc] initWithFrame:CGRectMake(200.0f, 40.0f, 60.0f, 60.0f)];
     self.labeledProgressView.roundedCorners = YES;
     [self.view addSubview:self.labeledProgressView];
     
