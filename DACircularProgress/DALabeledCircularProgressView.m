@@ -10,6 +10,15 @@
 
 @implementation DALabeledCircularProgressView
 
+- (UILabel *)progressLabel
+{
+    if (_progressLabel == nil) {
+        _progressLabel = [[UILabel alloc] init];
+        [self addSubview:_progressLabel];
+    }
+    return _progressLabel;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,6 +37,11 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    [self initializeLabel];
+}
 
 #pragma mark - Internal methods
 
@@ -37,7 +51,7 @@
  */
 - (void)initializeLabel
 {
-    self.progressLabel = [[UILabel alloc] initWithFrame:self.bounds];
+    self.progressLabel.frame = self.bounds;
     self.progressLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.progressLabel.textAlignment = NSTextAlignmentCenter;
     self.progressLabel.backgroundColor = [UIColor clearColor];
