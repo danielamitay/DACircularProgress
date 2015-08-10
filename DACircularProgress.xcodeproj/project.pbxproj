@@ -11,7 +11,7 @@
 		6C55C7EF1B783AA7006A7440 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C55C7EB1B783AA7006A7440 /* DACircularProgressView.m */; };
 		6C55C7F01B783AA7006A7440 /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C55C7EC1B783AA7006A7440 /* DALabeledCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C55C7F11B783AA7006A7440 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C55C7ED1B783AA7006A7440 /* DALabeledCircularProgressView.m */; };
-		6C55C7F31B783B42006A7440 /* CircularProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C55C7F21B783B42006A7440 /* CircularProgress.h */; };
+		6C55C7F31B783B42006A7440 /* CircularProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C55C7F21B783B42006A7440 /* CircularProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
