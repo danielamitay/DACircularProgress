@@ -13,7 +13,7 @@ View the included example project for a demonstration.
 ### Carthage
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-DACircularProgress is fully Carthage compatible. It can then be included using this import:
+DACircularProgress is fully Carthage compatible. To include it, build you project with Carthage, then drag **./Carthage/Build/iOS/DACircularProgress.framework** into you project and add this import:
 
 ```objectivec
 @import QuartzCore;
