@@ -19,3 +19,5 @@ build/
 # Backup files
 *~.nib
 / graphics/
+
+Carthage/Build
