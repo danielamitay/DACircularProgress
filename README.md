@@ -17,7 +17,7 @@ DACircularProgress is fully Carthage compatible. To include it, build you projec
 
 ```objectivec
 @import QuartzCore;
-#import <DACircularProgress/CircularProgress.h>
+#import <DACircularProgress/DACircularProgress.h>
 ```
 
 ### Manual
