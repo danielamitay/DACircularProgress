@@ -9,10 +9,10 @@
 @import Foundation;
 
 //! Project version number for DACircularProgress.
-FOUNDATION_EXPORT double daCircularProgressVersionNumber;
+FOUNDATION_EXPORT double circularProgressVersionNumber;
 
 //! Project version string for DACircularProgress.
-FOUNDATION_EXPORT const unsigned char daCircularProgressVersionString[];
+FOUNDATION_EXPORT const unsigned char circularProgressVersionString[];
 
 #import <DACircularProgress/DACircularProgressView.h>
 #import <DACircularProgress/DALabeledCircularProgressView.h>

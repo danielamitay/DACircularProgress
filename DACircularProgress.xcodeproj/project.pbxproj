@@ -11,7 +11,7 @@
 		6C55C7EF1B783AA7006A7440 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C55C7EB1B783AA7006A7440 /* DACircularProgressView.m */; };
 		6C55C7F01B783AA7006A7440 /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C55C7EC1B783AA7006A7440 /* DALabeledCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C55C7F11B783AA7006A7440 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C55C7ED1B783AA7006A7440 /* DALabeledCircularProgressView.m */; };
-		6C55C7F31B783B42006A7440 /* DACircularProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C55C7F21B783B42006A7440 /* DACircularProgress.h */; };
+		6C55C7F31B783B42006A7440 /* CircularProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C55C7F21B783B42006A7440 /* CircularProgress.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		6C55C7EB1B783AA7006A7440 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		6C55C7EC1B783AA7006A7440 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
 		6C55C7ED1B783AA7006A7440 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
-		6C55C7F21B783B42006A7440 /* DACircularProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgress.h; sourceTree = "<group>"; };
+		6C55C7F21B783B42006A7440 /* CircularProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularProgress.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 				6C55C7EB1B783AA7006A7440 /* DACircularProgressView.m */,
 				6C55C7EC1B783AA7006A7440 /* DALabeledCircularProgressView.h */,
 				6C55C7ED1B783AA7006A7440 /* DALabeledCircularProgressView.m */,
-				6C55C7F21B783B42006A7440 /* DACircularProgress.h */,
+				6C55C7F21B783B42006A7440 /* CircularProgress.h */,
 			);
 			path = DACircularProgress;
 			sourceTree = "<group>";
@@ -71,7 +71,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C55C7F31B783B42006A7440 /* DACircularProgress.h in Headers */,
+				6C55C7F31B783B42006A7440 /* CircularProgress.h in Headers */,
 				6C55C7F01B783AA7006A7440 /* DALabeledCircularProgressView.h in Headers */,
 				6C55C7EE1B783AA7006A7440 /* DACircularProgressView.h in Headers */,
 			);
