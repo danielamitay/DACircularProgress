@@ -10,6 +10,18 @@ View the included example project for a demonstration.
 
 ## Installation
 
+### Carthage
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+DACircularProgress is fully Carthage compatible. It can then be included using this import:
+
+```objectivec
+@import QuartzCore;
+#import <DACircularProgress/CircularProgress.h>
+```
+
+### Manual
+
 To use `DACircularProgress`:
 
 - Copy over the `DACircularProgress` folder to your project folder.
