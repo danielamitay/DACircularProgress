@@ -218,8 +218,8 @@
         animation.delegate = self;
         [self.circularProgressLayer addAnimation:animation forKey:@"progress"];
     } else {
-        [self.circularProgressLayer setNeedsDisplay];
         self.circularProgressLayer.progress = pinnedProgress;
+        [self.circularProgressLayer setNeedsDisplay];
     }
 }
 
