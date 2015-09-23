@@ -19,11 +19,11 @@ To use `DACircularProgress`:
 - `#import "DACircularProgressView.h"`
 
 ### Cocoapods
-- ´pod install DACircularProgress´
+- `$ pod install DACircularProgress`
 - `#import "DACircularProgressView.h"`
 
 ### Carthage
-- add this repo to your `Cartfile`
+- add this repo to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile)
 - `@import DACircularProgress;` (Objective-C)
 - `import DACircularProgress` (Swift)
 
