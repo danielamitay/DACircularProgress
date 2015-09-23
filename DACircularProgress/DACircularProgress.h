@@ -17,4 +17,4 @@ FOUNDATION_EXPORT const unsigned char DACircularProgressVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <DACircularProgress/PublicHeader.h>
 
 #import "DACircularProgressView.h"
-#import "DALabelesCircularProgressView.h"
+#import "DALabeledCircularProgressView.h"
