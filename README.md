@@ -29,13 +29,22 @@ To use `DACircularProgress`:
 
 ### Example Code
 
+Objective-C
 ```objective-c
-
 self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
 self.progressView.roundedCorners = YES;
 self.progressView.trackTintColor = [UIColor clearColor];
 [self.view addSubview:self.progressView];
 ```
+
+Swift
+```swift
+progressView = DACircularProgressView(frame: CGRectMake(140.0f, 30.0f, 40.0f, 40.0f))
+progressView.roundedCorners = Int(true)  // Cannot use Bool, see header for why
+progressView.trackTintColor = UIColor.clearColor()
+view.addSubview(progressView)
+```
+
 
 - You can also use Interface Builder by adding a `UIView` element and setting its class to `DACircularProgress`
 
