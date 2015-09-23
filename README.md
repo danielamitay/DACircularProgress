@@ -1,4 +1,5 @@
-## DACircularProgress
+## DACircularProgress 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 `DACircularProgress` is a `UIView` subclass with circular `UIProgressView` properties.
 
@@ -12,9 +13,19 @@ View the included example project for a demonstration.
 
 To use `DACircularProgress`:
 
+### Manual
 - Copy over the `DACircularProgress` folder to your project folder.
 - Make sure that your project includes `<QuartzCore.framework>`.
 - `#import "DACircularProgressView.h"`
+
+### Cocoapods
+- ´pod install DACircularProgress´
+- `#import "DACircularProgressView.h"`
+
+### Carthage
+- add this repo to your `Cartfile`
+- `@import DACircularProgress;` (Objective-C)
+- `import DACircularProgress` (Swift)
 
 ### Example Code
 
@@ -32,7 +43,7 @@ self.progressView.trackTintColor = [UIColor clearColor];
 
 ### Compatibility
 
-iOS5.0+
+iOS5.0+ (if you use Carthage to install then iOS8.0+ is required for framework support)
 
 ### Automatic Reference Counting (ARC) support
 
