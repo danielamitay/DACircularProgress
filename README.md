@@ -18,6 +18,14 @@ To use `DACircularProgress`:
 
 ### Example Code
 
+##### Within Interface Builder
+
+Add a `UIView` element and set its class to `DACircularProgressView` or `DALabeledCircularProgressView`.
+
+##### Programmatically
+
+Alternatively, manually initialise and add to a UIView:
+
 ```objective-c
 
 self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
@@ -25,8 +33,6 @@ self.progressView.roundedCorners = YES;
 self.progressView.trackTintColor = [UIColor clearColor];
 [self.view addSubview:self.progressView];
 ```
-
-- You can also use Interface Builder by adding a `UIView` element and setting its class to `DACircularProgress`
 
 ## Notes
 
