@@ -203,8 +203,7 @@
        initialDelay:(CFTimeInterval)initialDelay
        withDuration:(CFTimeInterval)duration
 {
-    [self.layer removeAnimationForKey:@"indeterminateAnimation"];
-    [self.circularProgressLayer removeAnimationForKey:@"progress"];
+    [self.layer removeAllAnimations];
     
     CGFloat pinnedProgress = MIN(MAX(progress, 0.0f), 1.0f);
     if (animated) {
@@ -304,7 +303,7 @@
             [self.layer addAnimation:spinAnimation forKey:@"indeterminateAnimation"];
         }
     } else {
-        [self.layer removeAnimationForKey:@"indeterminateAnimation"];
+  	    [self.layer removeAllAnimations];
     }
 }
 
