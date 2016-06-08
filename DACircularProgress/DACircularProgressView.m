@@ -19,7 +19,7 @@
 @property(nonatomic) CGFloat thicknessRatio;
 @property(nonatomic) CGFloat progress;
 @property(nonatomic) NSInteger clockwiseProgress;
-
+@property(nonatomic) CGFloat proStart;
 @end
 
 @implementation DACircularProgressLayer
@@ -31,6 +31,7 @@
 @dynamic thicknessRatio;
 @dynamic progress;
 @dynamic clockwiseProgress;
+@dynamic proStart;
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
@@ -43,6 +44,7 @@
 
 - (void)drawInContext:(CGContextRef)context
 {
+    
     CGRect rect = self.bounds;
     CGPoint centerPoint = CGPointMake(rect.size.width / 2.0f, rect.size.height / 2.0f);
     CGFloat radius = MIN(rect.size.height, rect.size.width) / 2.0f;
@@ -50,11 +52,13 @@
     BOOL clockwise = (self.clockwiseProgress != 0);
     
     CGFloat progress = MIN(self.progress, 1.0f - FLT_EPSILON);
+    CGFloat proStart = self.proStart ? self.proStart : 3.0f *M_PI_2;
+    
     CGFloat radians = 0;
     if (clockwise) {
-        radians = (float)((progress * 2.0f * M_PI) - M_PI_2);
+        radians = (float)((progress * 2.0f * M_PI) - (2.0f*M_PI - self.proStart));
     } else {
-        radians = (float)(3 * M_PI_2 - (progress * 2.0f * M_PI));
+        radians = (float)(proStart - (progress * 2.0f * M_PI));  //修改的地方  (progress * 2.0f * M_PI 起始位置
     }
     
     CGContextSetFillColorWithColor(context, self.trackTintColor.CGColor);
@@ -70,7 +74,7 @@
         CGContextSetFillColorWithColor(context, self.progressTintColor.CGColor);
         CGMutablePathRef progressPath = CGPathCreateMutable();
         CGPathMoveToPoint(progressPath, NULL, centerPoint.x, centerPoint.y);
-        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, (float)(3.0f * M_PI_2), radians, !clockwise);
+        CGPathAddArc(progressPath, NULL, centerPoint.x, centerPoint.y, radius, (float)proStart, radians, !clockwise); //修改画园的起始位置
         CGPathCloseSubpath(progressPath);
         CGContextAddPath(context, progressPath);
         CGContextFillPath(context);
@@ -285,6 +289,15 @@
 {
     self.circularProgressLayer.thicknessRatio = MIN(MAX(thicknessRatio, 0.f), 1.f);
     [self.circularProgressLayer setNeedsDisplay];
+}
+
+-(CGFloat)proStart{
+    return self.circularProgressLayer.proStart;
+}
+
+-(void)setProStart:(CGFloat)proStart{
+    self.circularProgressLayer.proStart = proStart;
+     [self.circularProgressLayer setNeedsDisplay];
 }
 
 - (NSInteger)indeterminate
