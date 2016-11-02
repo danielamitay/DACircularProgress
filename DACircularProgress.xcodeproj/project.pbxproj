@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4C76E68D1BB1EB6400DA1FDA /* DACircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C76E6891BB1EB6400DA1FDA /* DACircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C76E68E1BB1EB6400DA1FDA /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C76E68A1BB1EB6400DA1FDA /* DACircularProgressView.m */; settings = {ASSET_TAGS = (); }; };
+		4C76E68E1BB1EB6400DA1FDA /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C76E68A1BB1EB6400DA1FDA /* DACircularProgressView.m */; };
 		4C76E68F1BB1EB6400DA1FDA /* DALabeledCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C76E68B1BB1EB6400DA1FDA /* DALabeledCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C76E6901BB1EB6400DA1FDA /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C76E68C1BB1EB6400DA1FDA /* DALabeledCircularProgressView.m */; settings = {ASSET_TAGS = (); }; };
+		4C76E6901BB1EB6400DA1FDA /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C76E68C1BB1EB6400DA1FDA /* DALabeledCircularProgressView.m */; };
 		4CDA796E1BB1E7240007519F /* DACircularProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CDA796D1BB1E7240007519F /* DACircularProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
