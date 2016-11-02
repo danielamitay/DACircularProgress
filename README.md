@@ -1,4 +1,5 @@
-## DACircularProgress
+## DACircularProgress 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 `DACircularProgress` is a `UIView` subclass with circular `UIProgressView` properties.
 
@@ -12,19 +13,38 @@ View the included example project for a demonstration.
 
 To use `DACircularProgress`:
 
+### Manual
 - Copy over the `DACircularProgress` folder to your project folder.
 - Make sure that your project includes `<QuartzCore.framework>`.
 - `#import "DACircularProgressView.h"`
 
+### Cocoapods
+- `$ pod install DACircularProgress`
+- `#import "DACircularProgressView.h"`
+
+### Carthage
+- add this repo to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile)
+- `@import DACircularProgress;` (Objective-C)
+- `import DACircularProgress` (Swift)
+
 ### Example Code
 
+Objective-C
 ```objective-c
-
 self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
 self.progressView.roundedCorners = YES;
 self.progressView.trackTintColor = [UIColor clearColor];
 [self.view addSubview:self.progressView];
 ```
+
+Swift
+```swift
+progressView = DACircularProgressView(frame: CGRectMake(140.0f, 30.0f, 40.0f, 40.0f))
+progressView.roundedCorners = Int(true)  // Cannot use Bool, see header for why
+progressView.trackTintColor = UIColor.clearColor()
+view.addSubview(progressView)
+```
+
 
 - You can also use Interface Builder by adding a `UIView` element and setting its class to `DACircularProgress`
 
@@ -32,7 +52,7 @@ self.progressView.trackTintColor = [UIColor clearColor];
 
 ### Compatibility
 
-iOS5.0+
+iOS5.0+ (if you use Carthage to install then iOS8.0+ is required for framework support)
 
 ### Automatic Reference Counting (ARC) support
 
