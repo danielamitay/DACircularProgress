@@ -225,8 +225,11 @@
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag
 {
-   NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
-   self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
+   if (flag)
+   {
+       NSNumber *pinnedProgressNumber = [animation valueForKey:@"toValue"];
+       self.circularProgressLayer.progress = [pinnedProgressNumber floatValue];
+   }
 }
 
 
