@@ -10,9 +10,11 @@
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
+.swiftpm/
 
 # Generated files
 build/
+.build/
 *.[oa]
 *.pyc
 
